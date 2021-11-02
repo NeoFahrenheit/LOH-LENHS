@@ -1,0 +1,170 @@
+[
+    {
+        "index": 0,
+        "isSelected": false,
+        "name": "Guanabara",
+        "region": "norte",
+        "data": "0.67211912641662, 0.65658039209600, 0.67741121970335, 0.69480063474081, 0.71859565536212, 0.84396472455120, 1.02804731845288, 1.06922787427787, 1.07700694102265, 1.18954927970886, 1.15696643555790, 1.22917014235110, 1.24676130874553, 1.17159340893836, 1.15487908498000, 1.07564123952930, 1.05394132915346, 1.09353115312540, 1.17749851596358, 1.13928603298635, 1.07234338080957, 1.03047609440412, 0.93112131076305, 0.83948739635994",
+        "info": "Apenas um teste. A descrição do reservatório ficará aqui."
+    },
+    {
+        "index": 1,
+        "isSelected": false,
+        "name": "Setor Básico UFPA",
+        "region": "norte",
+        "data": "0.90702986471040, 0.88204473995560, 0.90903422641789, 0.90849038532289, 0.89607479204598, 0.88400932187314, 0.87296224424530, 0.87612697561022, 0.91990919757964, 0.92818124965712, 1.07953139237850, 1.09336519096911, 1.16240263687057, 1.17291262915212, 1.28539100426762, 1.32768197782858, 1.15283561899652, 1.05991860068245, 0.97710710079398, 0.94350152211823, 0.92922203040887, 0.95324405314662, 0.95656987853097, 0.92245336643770",
+        "info": "SÁ, J.H.M. Análise do volume ideal do Reservatório Elevado (RE) do Sistema de Abastecimento de Água do Setor Básico da Cidade Universitária Professor José da Silveira Netto – Belém (PA). (Graduação em Engenharia Sanitária e Ambiental) – Faculdade de Engenharia Sanitária e Ambiental, Instituto de Tecnologia, Universidade Federal do Pará, Belém. 2012. 74 p."
+    },
+    {
+        "index": 2,
+        "isSelected": false,
+        "name": "Reservatório Cangaíba",
+        "region": "sudeste",
+        "data": "0.68168984341014, 0.59164351459968, 0.50212552241914, 0.50701614290493, 0.49709931111683, 0.55435604005462, 0.68346187511579, 0.86614946043232, 1.10875416001781, 1.32846271379175, 1.52176378716060, 1.55833122771445, 1.54560906868785, 1.38948793231992, 1.31241624198753, 1.20513585284188, 1.16052647420433, 1.15996540875663, 1.15009065687711, 1.08845761744727, 1.02569309603122, 0.92210171220421, 0.86560242162081, 0.77405991828316",
+        "info": "Cangaíba é um distrito situado na zona leste do município brasileiro de São Paulo, com 151.538 habitantes e uma área de 16km².\n\nAo norte, faz divisa com o município de Guarulhos, através do Parque Ecológico do Tietê — região muito movimentada devido ao turismo ocasionado pelo parque e por abranger parte da rodovia Ayrton Senna, principal ligação da capital paulista com o Vale do Paraíba. Ao leste e ao sul, faz divisa com o distrito da Penha e também ao sul com a Ponte Rasa, mais a leste faz divisa com Ermelino Matarazzo, encerrando seu trajeto."
+    },
+    {
+        "index": 3,
+        "isSelected": false,
+        "name": "Reservatório Gopoúva",
+        "region": "sudeste",
+        "data": "0.91669562395830, 0.87650935753721, 0.83659535875704, 0.82375722874915, 0.81831953004127, 0.82637930827891, 0.89545765452271, 0.97976440010386, 1.07227853890869, 1.11570358746787, 1.14779617887674, 1.15424312671138, 1.13667694337293, 1.12789877220324, 1.08828547061685, 1.05991715063348, 1.02510735003718, 1.00657784223430, 1.02329769965280, 1.04551758210662, 1.03294734596228, 1.02552832610848, 1.00896811156376, 0.95577751159495",
+        "info": "Gopoúva é um bairro da Região Norte da Grande São Paulo, pertencente ao município de Guarulhos.\nSeu reservatório abestece o Centro, Ponte Grande, Picanço e Parque Continental."
+    },
+    {
+        "index": 4,
+        "isSelected": false,
+        "name": "Reservatório Jaçanã",
+        "region": "sudeste",
+        "data": "0.74359685031957, 0.65211279861933, 0.60108269877581, 0.58210063134203, 0.57826556994977, 0.61416724447556, 0.77191015724557, 0.94763177836417, 1.15886487880878, 1.30222259521305, 1.39760488276647, 1.41471401324124, 1.36280318708962, 1.29864394780922, 1.24356325017737, 1.17918847450090, 1.13258430306647, 1.11672379723104, 1.10766383630630, 1.07263545579909, 1.02387592040390, 0.95328031839928, 0.90622277730414, 0.83854063279132",
+        "info": "Apenas um teste. A descrição do reservatório ficará aqui."
+    },
+    {
+        "index": 5,
+        "isSelected": false,
+        "name": "Reservatório Jardim Popular",
+        "region": "sudeste",
+        "data": "0.71565865894299, 0.62895408844565, 0.52757095118146, 0.53117055344239, 0.50073523715599, 0.54924497139880, 0.64657006649147, 0.81439303227933, 1.05439481510121, 1.28085564130473, 1.47995439654840, 1.53888090431517, 1.51252909908422, 1.40726620183595, 1.35399378629979, 1.23064798146714, 1.17000656884964, 1.15463185258893, 1.15468279035677, 1.09337918675731, 1.02986827988464, 0.93711060464192, 0.87032270137132, 0.81717763025477",
+        "info": "O Jardim Popular é um bairro do município de São Paulo, localizado no subdistrito de Ponte Rasa, na divisa com o subdistrito da Penha. É abastecido pela SABESP.\n\nSILVA, C.S. Previsão multivariada da demanda de água em sistemas urbanos de abastecimento. (Doutorado em Engenharia Civil) – Universidade Estadual de Campinas, São Paulo. 2003. 278 p."
+    },
+    {
+        "index": 6,
+        "isSelected": false,
+        "name": "Reservatório Penha",
+        "region": "sudeste",
+        "data": "0.76118611592026, 0.68065090159753, 0.63842504629500, 0.62036096036506, 0.60925618705990, 0.64137145657509, 0.75513061012987, 0.90775948294215, 1.09064780856970, 1.24948282164477, 1.34755791393349, 1.38983197226719, 1.34628053360756, 1.29321502167128, 1.24738598978899, 1.17453313355855, 1.14432188377446, 1.14673203533282, 1.11323695405046, 1.06838403354931, 1.03156294311641, 0.96194571535307, 0.93370476446794, 0.84703571442918",
+        "info": "Localizado na Penha, Rio de Janeiro, possui capacidade para armazenar cerca de 2.000 m³ d’água. O reservatório da Penha foi construído em um contraforte da Serra da Misericórdia em 1914 valendo-se da, então inovadora, tecnologia do concreto armado.\n\nA forma troncônica subdivide-se em dois compartimentos, com um poço cilíndrico ao centro para os aparelhos de manobra. Provê o abastecimento dos subúrbios da Leopoldina entre Bonsucesso e Vigário Geral."
+    },
+    {
+        "index": 7,
+        "isSelected": false,
+        "name": "Edu Chaves",
+        "region": "sudeste",
+        "data": "0.87419350418980, 0.83529962070832, 0.81309605653688, 0.80631667071513, 0.80537013815252, 0.81973407710578, 0.88332692878738, 0.95959348270331, 1.05257494119065, 1.13553175935588, 1.19418911981819, 1.20616521526125, 1.18388789530571, 1.14806716949502, 1.12080211463979, 1.08668699133638, 1.06855228792107, 1.05675136246525, 1.05974769119426, 1.03555579400983, 1.01461529764108, 0.97370849588523, 0.95061986230461, 0.91561352327667",
+        "info": "Apenas um teste. A descrição do reservatório ficará aqui."
+    },
+    {
+        "index": 8,
+        "isSelected": false,
+        "name": "Ermelino Matarazzo",
+        "region": "sudeste",
+        "data": "0.73805518477208, 0.65558316114758, 0.61496256102690, 0.60037781820842, 0.60227033772788, 0.63928760811132, 0.72140649856461, 0.86652708954269, 1.08062864561429, 1.27491017389237, 1.40798652379820, 1.45079449249392, 1.40692712428459, 1.31685759476312, 1.25502500502843, 1.18381552963119, 1.14942447292874, 1.14536515569859, 1.13289578342994, 1.10005782698532, 1.01240194554664, 0.94189873649180, 0.88125582841156, 0.82128490189983",
+        "info": "Ermelino Matarazzo é um distrito situado na zona leste do município brasileiro de São Paulo, capital do estado homônimo, possui 113.615 habitantes, de acordo com as informações do censo demográfico de 2010, sendo que 97,% dessas pessoas trabalham fora do distrito.\n\nO distrito faz divisa com o município de Guarulhos ao norte, com os bairros V. Jacuí e Ponte Rasa a leste e a oeste faz divisa com a Penha."
+    },
+    {
+        "index": 9,
+        "isSelected": false,
+        "name": "DMAE",
+        "region": "sul",
+        "data": "0.39863548080773, 0.38315063643372, 0.38529469180858, 0.35194271931073, 0.38180067564214, 0.63527566662586, 0.88859183869292, 1.01707634226800, 1.08123918459721, 1.08028627109727, 1.01787043685128, 1.20797668008907, 1.33328480533102, 1.33439653774762, 1.27055133325172, 1.33439653774762, 1.39935347466011, 1.52577333231866, 1.58818916656465, 1.52370868640212, 1.39268308016054, 1.07425115226433, 0.75899560270125, 0.63527566662586",
+        "info": "O Departamento Municipal de Água e Esgotos (DMAE), fornece abastecimento de água para a cidade de Porto Alegre.\nPorto Alegre é um município brasileiro e a capital do estado mais meridional do Brasil, o Rio Grande do Sul. Com uma área de quase 500 km² e uma população de 1.488.252 habitantes, possui uma geografia diversificada, com morros, baixadas e um grande lago: o Guaíba.\n\nKURITZA, J.C. Metodologia para avaliação da eficiência energética de sistemas de bombeamento de água com velocidade de rotação variável. (Doutorado em Recursos Hídricos e Saneamento Ambiental) – Instituto de Pesquisas Hidráulicas, Universidade Federal do Rio Grande do Sul, Porto Alegre. 2017. 160 p."
+    },
+    {
+        "index": 10,
+        "isSelected": false,
+        "name": "Campus do Vale",
+        "region": "sul",
+        "data": "0.27205159463605, 0.25105194856267, 0.25034409532424, 0.25175980180109, 0.25034409532424, 0.25270360611900, 0.36100515159857, 0.63730386566519, 1.12430689370404, 1.59196193322584, 1.87321561996146, 1.87604703291518, 2.08415588501317, 2.35951079476189, 1.97396673089779, 2.15305360022022, 1.68917377797003, 1.38290927680994, 1.11911596995556, 0.78736875221204, 0.53159778205985, 0.36289276023438, 0.31735420189547, 0.24680482913209",
+        "info": "O Campus do Vale, localizado no bairro Agronomia, é o maior da Universidade Federal do Rio Grande do Sul (UFRGS). Possui dois restaurantes universitários e atende milhares de estudantes."
+    },
+    {
+        "index": 11,
+        "isSelected": false,
+        "name": "Vila de Tucuruí",
+        "region": "norte",
+        "data": "0.07985942795047, 0.08052271223577, 0.15065839256370, 0.01983220013056, 0.18764312431219, 0.39958898483787, 1.25397873842223, 2.15841992417555, 1.65936482791366, 0.97935251293543, 2.96825023947326, 3.19703025515994, 2.15003601080932, 1.24599279562719, 1.29416050042588, 1.33456777908654, 0.81648968952215, 1.28256629111879, 0.61470534424731, 1.02172311308057, 0.65444933862266, 0.03947868066123, 0.24363758367746, 0.16769153301028",
+        "info": "Tucuruí é um município brasileiro do estado do Pará, com 2.084.289km² de área e 115.144 habitantes."
+    },
+    {
+        "index": 12,
+        "isSelected": false,
+        "name": "Exemplo Tsutiya EE",
+        "region": "sudeste",
+        "data": "0.61156438453352, 0.57892869811990, 0.28662646328485, 0.19865200425683, 0.26108549130898, 0.42852075203973, 0.65413267115999, 0.90244767648102, 1.14224902447677, 1.34657680028379, 1.50266051791415, 1.59914863426747, 1.63462220645619, 1.61475700603051, 1.54664774742817, 1.44590280241220, 1.32813054274565, 1.20893934019156, 1.10393756651295, 1.02163887903512, 0.96630010642072, 0.92798864845690, 0.88683930471799, 0.80170273146506",
+        "info": "Estes são dados artificiais presente no livro Abastecimento de Água de Milton Tsutiya.\n\nTsutiya, M. T. (2004). Abastecimento de Água. São Paulo: Departamento de Engenharia Hidráulica e Sanitária da Escola Politécnica da Universidade de São Paulo."
+    },
+    {
+        "index": 13,
+        "isSelected": false,
+        "name": "Assunção",
+        "region": "exterior",
+        "data": "0.57721115668314, 0.50472177447257, 0.46547233341399, 0.46624886818970, 0.49872930990522, 0.69545639828155, 1.03605678294145, 1.27222403378926, 1.37256381217578, 1.40256369524795, 1.34709810021927, 1.23036456607755, 1.23679241188895, 1.21520745691482, 1.14480746077372, 1.07657226935930, 1.11693832659499, 1.20441120199165, 1.21484299048283, 1.17694469461376, 1.08367566682549, 1.00384321243811, 0.91823040875424, 0.73902306796471",
+        "info": "Assunção é a capital e maior cidade da República do Paraguai. Está localizada junto à baía de Assunção, na margem esquerda do rio Paraguai, frente à confluência com o rio Pilcomayo. Em 2010, segundo a Direção Geral de Estatísticas, Pesquisas e Censos (DGEEC), tinha uma população aproximada de 544.309 habitantes, o que a converte na maior e mais populosa aglomeração urbana do Paraguai.\n\nSua área metropolitana, denominada Grande Assunção, inclui as cidades de San Lorenzo, Lambaré, Fernando de la Mora, Capiatá, Luque, Mariano Roque Alonso, Ñemby, Villa Elisa, Villa Hayes e San Antonio, a qual incrementa sua população periférica em mais de 2.529.061 habitantes. Sua superfície é de 117km² na cidade, e 1.000 km² na Grande Assunção."
+    },
+    {
+        "index": 14,
+        "isSelected": false,
+        "name": "João Pessoa - PB",
+        "region": "nordeste",
+        "data": "0.87658321058497, 0.71752577322013, 0.61502209133154, 0.56553755527384, 0.61855670097690, 0.81296023569016, 0.86951399116641, 0.98969072166530, 1.03564064794980, 1.21237113405278, 1.26185567011047, 1.27599410894758, 1.33254786455166, 1.34668630338877, 1.18055964647754, 1.05684830633329, 1.09572901319925, 1.05331369656010, 0.97201767305500, 0.97555228282820, 1.05684830633329, 1.08159057436214, 1.01796759946734, 0.97908689247355",
+        "info": "João Pessoa é um município brasileiro, capital do estado da Paraíba. Com população estimada em 2020 em 817.511 habitantes, a capital paraibana é a oitava cidade mais populosa da Região Nordeste e a 23ª do Brasil, sendo, no seu estado, o município mais populoso. Pertence à Região Geográfica Imediata de João Pessoa e à Região Geográfica Intermediária de João Pessoa.\n\nA Região Metropolitana de João Pessoa, formada por João Pessoa e mais onze municípios, tinha uma população estimada em 2018 de 1.099.360 pessoas, a 23.ª mais populosa do Brasil."
+    },
+    {
+        "index": 15,
+        "isSelected": false,
+        "name": "Bairro Coopha - Campo Grande - MS",
+        "region": "centro-oeste",
+        "data": "1.01849289598713, 0.89780678821604, 0.88312874808172, 0.86192713455436, 0.84969543444243, 0.84561820107178, 0.84539168810675, 0.84480275439766, 0.85377266781307, 0.94836448201204, 1.06171156971597, 1.10493024344481, 1.13999445043236, 1.14162534378061, 1.08780586328810, 1.05437254964881, 1.07802050319855, 1.02420102270604, 1.05926522969358, 1.01033842924584, 1.01767744931301, 1.08454407659158, 1.16445785065623, 1.12205462360152",
+        "info": "Dados retirados do trabalho de conclusão de curso de Clésio Leonel Hossa.\n\nHOSSA, Clésio Leonel. Uso de Indicadores de desempenho para avaliar a eficiência energética em sistemas de abastecimento de água. 2008."
+    },
+    {
+        "index": 16,
+        "isSelected": false,
+        "name": "Bairro Nova Lima - Campo Grande - MS",
+        "region": "centro-oeste",
+        "data": "0.94777187539025, 0.94154715132420, 0.94154715132420, 0.94016387930952, 0.93094206587833, 0.95215223677006, 0.98465912911499, 1.00586930000672, 1.01993256548928, 1.03076819627093, 1.02938492425625, 1.07779944476998, 1.02385183619754, 1.01301620541589, 1.01578274944525, 1.00725257202140, 1.01439947743057, 1.08402416883603, 1.08909616622319, 1.02800165224157, 0.99895293993333, 0.98604240112967, 0.97290131699023, 0.96414059423060",
+        "info": "O bairro Nova Lima, em Campo Grande, possui 35.519 habitantes. Os dados foram retirados do trabalho de conclusão de curso de Clésio Leonel Hossa.\n\nHOSSA, Clésio Leonel. Uso de Indicadores de desempenho para avaliar a eficiência energética em sistemas de abastecimento de água. 2008."
+    },
+    {
+        "index": 17,
+        "isSelected": false,
+        "name": "Bairro Mangabeira - João Pessoa - PB",
+        "region": "nordeste",
+        "data": "0.53114760576553, 0.48542647044295, 0.42824541356157, 0.47282055672826, 0.58552295771355, 1.19779890472129, 1.29848814655527, 1.30658912558823, 1.32215881211986, 1.36416535217854, 1.37285908577488, 1.36953966021991, 1.32287011759592, 1.29560340768012, 1.21419844764166, 1.15579236466261, 1.16835876140641, 1.16045536722792, 1.13366286096283, 1.11663104650818, 0.94078052603674, 0.56999278815281, 0.59690384533058, 0.58998837542440",
+        "info": "O bairro Mangabeira é o mais populoso da cidade de João Pessoa, possuindo 75.988 habitantes. Os dados foram retirados da dissertação de Leonardo Leite Brasil Montenegro.\n\nMONTENEGRO, Leonardo Leite Brasil. Eficiência hidráulica e energética da operação do bombeamento para o abastecimento do bairro de Mangabeira em João Pessoa. 2009."
+    },
+    {
+        "index": 18,
+        "isSelected": false,
+        "name": "Sistema 4 - Capinzal/Ouro - SC",
+        "region": "sul",
+        "data": "0.40336134453782, 0.27654698242934, 0.24980901451490, 0.21925133689840, 0.21925133689840, 0.24369747899160, 0.46600458365164, 1.00381970970206, 1.53857906799083, 1.81359816653934, 1.70588235294118, 1.67532467532468, 1.57754010695187, 1.39343009931245, 1.27196333078686, 1.24293353705118, 1.18411000763942, 1.59740259740260, 0.62184873949580, 1.36134453781513, 2.02139037433155, 0.50496562261268, 0.88388082505730, 0.52406417112300",
+        "info": "Esta região é dividida em três localidades distintas (Navegantes, Alvorada e Caravagio). Em cada entrada do bairro consumidor há um macromedidor, delimitando assim o setor. A reservação de água neste setor se faz através de dois reservatórios, R-04 e R-05, o R-04’ é um reservatório com finalidade de reduzir a pressão elevada para a localidade de Navegantes.\nOs dados foram retirados do trabalho de conclusão de curso de Bruno Comunello Eleotero.\n\nELEOTERO, Bruno Comunello. Redução dos custos com energia elétrica em sismas de bombeamento-estudo de caso sistema de abastecimento de água de Capinzal/Ouro, SC. 2008."
+    },
+    {
+        "index": 19,
+        "isSelected": false,
+        "name": "Sistema 6 - Capinzal/Ouro - SC",
+        "region": "sul",
+        "data": "0.45229958011913, 0.30465774826677, 0.28630016599941, 0.25231910946197, 0.25661556488624, 0.29215896885070, 0.52221462747779, 1.06513035836344, 1.39244214432184, 1.63109071379748, 1.69983400058588, 1.61898252123816, 1.52797578361488, 1.65530709891612, 1.25690850502881, 1.08817498291182, 1.12059369202226, 1.69944341372913, 0.64993652963578, 1.31159066497412, 2.00175764085538, 0.46714188067572, 0.87178986427107, 0.57533443999609",
+        "info": "A estação elevatória CB-06 está localizada junto à ETA, fazendo a sucção diretamente dos reservatórios à jusante da estação. O setor compreendido por esta elevatória, está localizado no município de Capinzal e compreende as localidades de São Luiz, Subestação e Jacob Domini.\nOs dados foram retirados do trabalho de conclusão de curso de Bruno Comunello Eleotero.\n\nELEOTERO, Bruno Comunello. Redução dos custos com energia elétrica em sismas de bombeamento-estudo de caso sistema de abastecimento de água de Capinzal/Ouro, SC. 2008."
+    },
+    {
+        "index": 20,
+        "isSelected": false,
+        "name": "Sistema 11 - Capinzal/Ouro - SC",
+        "region": "sul",
+        "data": "0.35073793873248, 0.27185910951259, 0.28326925461987, 0.26540989706065, 0.26193724420191, 0.26441771052958, 0.51544090288974, 0.93662408532804, 1.21294803423044, 1.52548679151681, 1.68374054322213, 1.44015874984497, 1.55822894704204, 1.49572119558477, 1.10132704948530, 1.11620984745132, 1.14746372317996, 1.99131836785316, 0.77539377402952, 1.49820166191244, 2.36834924965894, 0.56356194964653, 0.85675306957708, 0.51544090288974",
+        "info": "A CB-11 succiona diretamente na distribuição do setor do R-10 e realiza adução até os R-Parizotto e R-11. Esta operação é igual ao do CB-06, onde parte do volume aduzido de água vai para o R-Parizotto e a sobra para o R-11, sendo este o reservatório de maior elevação do sistema de Capinzal/Ouro. Abastece as regiões de Lar Imóveis, Parizoto Frente, Parizoto Fundos e São Roque.\nOs dados foram retirados do trabalho de conclusão de curso de Bruno Comunello Eleotero.\n\nELEOTERO, Bruno Comunello. Redução dos custos com energia elétrica em sismas de bombeamento-estudo de caso sistema de abastecimento de água de Capinzal/Ouro, SC. 2008."
+    }
+]

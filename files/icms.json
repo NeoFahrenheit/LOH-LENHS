@@ -1,0 +1,106 @@
+[
+    {
+        "state": "Acre",
+        "icms": 17
+    },
+    {
+        "state": "Alagoas",
+        "icms": 17
+    },
+    {
+        "state": "Amazonas",
+        "icms": 18
+    },
+    {
+        "state": "Amapá",
+        "icms": 18
+    },
+    {
+        "state": "Bahia",
+        "icms": 18
+    },
+    {
+        "state": "Ceará",
+        "icms": 17
+    },
+    {
+        "state": "Distrito Federal",
+        "icms": 18
+    },
+    {
+        "state": "Espírito Santo",
+        "icms": 17
+    },
+    {
+        "state": "Goiás",
+        "icms": 17
+    },
+    {
+        "state": "Maranhão",
+        "icms": 18
+    },
+    {
+        "state": "Mato Grosso",
+        "icms": 17
+    },
+    {
+        "state": "Mato Grosso do Sul",
+        "icms": 17
+    },
+    {
+        "state": "Minas Gerais",
+        "icms": 18
+    },
+    {
+        "state": "Pará",
+        "icms": 17
+    },
+    {
+        "state": "Paraíba",
+        "icms": 18
+    },
+    {
+        "state": "Paraná",
+        "icms": 18
+    },
+    {
+        "state": "Pernambuco",
+        "icms": 18
+    },
+    {
+        "state": "Rio Grande do Norte",
+        "icms": 18
+    },
+    {
+        "state": "Rio Grande do Sul",
+        "icms": 18
+    },
+    {
+        "state": "Rio de Janeiro",
+        "icms": 19
+    },
+    {
+        "state": "Rondônia",
+        "icms": 17
+    },
+    {
+        "state": "Roraima",
+        "icms": 17
+    },
+    {
+        "state": "Santa Catarina",
+        "icms": 17
+    },
+    {
+        "state": "São Paulo",
+        "icms": 18
+    },
+    {
+        "state": "Sergipe",
+        "icms": 18
+    },
+    {
+        "state": "Tocantins",
+        "icms": 18
+    }
+]
