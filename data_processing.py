@@ -291,14 +291,23 @@ def isDateBigger(date1, date2):
     else:
         return False
 
-def smoothGraph(x, y):
+def smoothGraph(x, y, stops=10):
     ''' Recebe duas listas e suaviza os valores para a impressão. `x` e `y` precisam ser numpy.array. '''
 
-    x_new = np.linspace(x.min(), x.max(), 300)
+    x_new = np.linspace(x.min(), x.max(), stops)
     a_BSpline = make_interp_spline(x, y)
     y_new = a_BSpline(x_new)
 
     return (x_new, y_new)
+
+def cutLastPieceGraph(arr, percentage):
+    ''' Retorna um novo numpy array sem os últimos ``percentage``. '''
+
+    cut = int((len(arr) * percentage) / 100)
+    length = len(arr) - cut
+    newArr = np.array(arr[:length])
+
+    return newArr
 
 def checkSorting(arr):
     ''' Verifica se a lista `arr` de números está ordenada. Retorna True se sim. `arr` não é modificado. '''

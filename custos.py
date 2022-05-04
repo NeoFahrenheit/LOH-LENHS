@@ -47,7 +47,6 @@ class Custos(wx.Frame):
         self.databaseWindow = None
 
         self.SetTitle(f'{self.WINDOW_NAME}')
-        self.CenterOnScreen()
 
         self.setupMenuBar(self.menu)
         self.setupToolsMenu(self.menu)
@@ -62,6 +61,7 @@ class Custos(wx.Frame):
             self.bottomBlueSizer.ShowItems(False)
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseApp)
+        self.CenterOnParent()
 
     def setupMenuBar(self, menu):
         """ Inicializa o menu. """
@@ -131,22 +131,22 @@ class Custos(wx.Frame):
         self.masterSizer.Add(self.bottomBlueSizer, flag=wx.TOP, border=25)
 
         # Configurando o campo de ICMS
-        icms = self.GetTextInputField('Alíquota ICMS (%) ')
-        icms[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputAliFields.append(icms[1])
-        self.topSizer.Add(icms[0], flag=wx.ALL, border=2)
+        self.icms = self.GetTextInputField('Alíquota ICMS (%) ')
+        self.icms[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputAliFields.append(self.icms[1])
+        self.topSizer.Add(self.icms[0], flag=wx.ALL, border=2)
 
         # Configurando o campo de PIS
-        pis = self.GetTextInputField('Alíquota PIS (%) ')
-        pis[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputAliFields.append(pis[1])
-        self.topSizer.Add(pis[0], flag=wx.ALL, border=2)
+        self.pis = self.GetTextInputField('Alíquota PIS (%) ')
+        self.pis[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputAliFields.append(self.pis[1])
+        self.topSizer.Add(self.pis[0], flag=wx.ALL, border=2)
 
         # Configurando o campo de CONFINS
-        confins = self.GetTextInputField('Alíquota CONFINS (%) ')
-        confins[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputAliFields.append(confins[1])
-        self.topSizer.Add(confins[0], flag=wx.ALL, border=2)
+        self.confins = self.GetTextInputField('Alíquota CONFINS (%) ')
+        self.confins[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputAliFields.append(self.confins[1])
+        self.topSizer.Add(self.confins[0], flag=wx.ALL, border=2)
 
         # Colocando o botão de usar o valor padrão das variáveis.
         self.defaultBtn = wx.Button(self, -1, 'Usar valores padrão ')
@@ -180,20 +180,20 @@ class Custos(wx.Frame):
         text.SetBackgroundColour(GREEN)
         self.bottomGreenSizer.Add(text, flag=wx.EXPAND)
 
-        energiaPonta = self.GetTextInputField('Energia Ponta (R$/kWh) ')
-        energiaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputGreenFields.append(energiaPonta[1])
-        self.bottomGreenSizer.Add(energiaPonta[0], flag=wx.ALL, border=2)
+        self.greenEnergiaPonta = self.GetTextInputField('Energia Ponta (R$/kWh) ')
+        self.greenEnergiaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputGreenFields.append(self.greenEnergiaPonta[1])
+        self.bottomGreenSizer.Add(self.greenEnergiaPonta[0], flag=wx.ALL, border=2)
 
-        energiaForaPonta = self.GetTextInputField('Energia Fora Ponta (R$/kWh) ')
-        energiaForaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputGreenFields.append(energiaForaPonta[1])
-        self.bottomGreenSizer.Add(energiaForaPonta[0], flag=wx.ALL, border=2)
+        self.greenEnergiaForaPonta = self.GetTextInputField('Energia Fora Ponta (R$/kWh) ')
+        self.greenEnergiaForaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputGreenFields.append(self.greenEnergiaForaPonta[1])
+        self.bottomGreenSizer.Add(self.greenEnergiaForaPonta[0], flag=wx.ALL, border=2)
 
-        energiaDemanda = self.GetTextInputField('Preço Demanda (R$) ')
-        energiaDemanda[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputGreenFields.append(energiaDemanda[1])
-        self.bottomGreenSizer.Add(energiaDemanda[0], flag=wx.ALL, border=2)
+        self.greenEnergiaDemanda = self.GetTextInputField('Preço Demanda (R$) ')
+        self.greenEnergiaDemanda[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputGreenFields.append(self.greenEnergiaDemanda[1])
+        self.bottomGreenSizer.Add(self.greenEnergiaDemanda[0], flag=wx.ALL, border=2)
 
         greenBtn = wx.Button(self,-1, 'Realizar Cálculos')
         greenBtn.Bind(wx.EVT_BUTTON, self.OnGreenCalculate)
@@ -206,25 +206,25 @@ class Custos(wx.Frame):
         text.SetBackgroundColour(BLUE)
         self.bottomBlueSizer.Add(text, flag=wx.EXPAND)
 
-        demandaPonta = self.GetTextInputField('Demanda Ponta (R$/kWh) ')
-        demandaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputBlueFields.append(demandaPonta[1])
-        self.bottomBlueSizer.Add(demandaPonta[0], flag=wx.ALL, border=2)
+        self.blueDemandaPonta = self.GetTextInputField('Demanda Ponta (R$/kWh) ')
+        self.blueDemandaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputBlueFields.append(self.blueDemandaPonta[1])
+        self.bottomBlueSizer.Add(self.blueDemandaPonta[0], flag=wx.ALL, border=2)
 
-        demandaForaPonta = self.GetTextInputField('Demanda Fora Ponta (R$/kWh) ')
-        demandaForaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputBlueFields.append(demandaForaPonta[1])
-        self.bottomBlueSizer.Add(demandaForaPonta[0], flag=wx.ALL, border=2)
+        self.blueDemandaForaPonta = self.GetTextInputField('Demanda Fora Ponta (R$/kWh) ')
+        self.blueDemandaForaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputBlueFields.append(self.blueDemandaForaPonta[1])
+        self.bottomBlueSizer.Add(self.blueDemandaForaPonta[0], flag=wx.ALL, border=2)
 
-        energiaPonta = self.GetTextInputField('Energia Ponta (R$/kWh) ')
-        energiaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputBlueFields.append(energiaPonta[1])
-        self.bottomBlueSizer.Add(energiaPonta[0], flag=wx.ALL, border=2)
+        self.blueEnergiaPonta = self.GetTextInputField('Energia Ponta (R$/kWh) ')
+        self.blueEnergiaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputBlueFields.append(self.blueEnergiaPonta[1])
+        self.bottomBlueSizer.Add(self.blueEnergiaPonta[0], flag=wx.ALL, border=2)
 
-        energiaForaPonta = self.GetTextInputField('Energia Fora Ponta (R$/kWh) ')
-        energiaForaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
-        self.inputBlueFields.append(energiaForaPonta[1])
-        self.bottomBlueSizer.Add(energiaForaPonta[0], flag=wx.ALL, border=2)
+        self.blueEnergiaForaPonta = self.GetTextInputField('Energia Fora Ponta (R$/kWh) ')
+        self.blueEnergiaForaPonta[1].Bind(wx.EVT_TEXT, self.OnKeyTyped)
+        self.inputBlueFields.append(self.blueEnergiaForaPonta[1])
+        self.bottomBlueSizer.Add(self.blueEnergiaForaPonta[0], flag=wx.ALL, border=2)
 
         blueBtn = wx.Button(self, -1, 'Realizar Cálculos')
         blueBtn.Bind(wx.EVT_BUTTON, self.OnBlueCalculate)
@@ -273,6 +273,11 @@ class Custos(wx.Frame):
     def OnGreenCalculate(self, event):
         ''' Chamada quando o botão 'Realizar Cálculos' da Tarifa Verde é clicado. '''
 
+        if not event:
+            isDataOnly = True
+        else:
+            isDataOnly = False
+
         if self.checkList(self.inputAliFields):
             self.message_dialog('Erros encontrados', 'Por favor, corriga os erros do campo de alíquotas antes de calcular.')
             return
@@ -283,12 +288,20 @@ class Custos(wx.Frame):
 
         if not self.greenResultWindow:
             self.greenResultWindow = tax_window.ResultWindow(self, 'GREEN',
-            self.inputAliFields, self.inputGreenFields, self.inputBlueFields)
+            self.inputAliFields, self.inputGreenFields, self.inputBlueFields, isDataOnly)
 
-            self.greenResultWindow.Show()
+            if not isDataOnly:
+                self.greenResultWindow.Show()
+            else:
+                return self.greenResultWindow.greenResult
 
     def OnBlueCalculate(self, event):
         ''' Chamada quando o botão 'Realizar Cálculos' da Tarifa Azul é clicado. '''
+
+        if not event:
+            isDataOnly = True
+        else:
+            isDataOnly = False
 
         if self.checkList(self.inputAliFields):
             self.message_dialog('Erros encontrados', 'Por favor, corriga os erros do campo de alíquotas antes de calcular.')
@@ -300,9 +313,12 @@ class Custos(wx.Frame):
 
         if not self.blueResultWindow:
             self.blueResultWindow = tax_window.ResultWindow(self, 'BLUE',
-            self.inputAliFields, self.inputGreenFields, self.inputBlueFields)
+            self.inputAliFields, self.inputGreenFields, self.inputBlueFields, isDataOnly)
 
-            self.blueResultWindow.Show()
+            if not isDataOnly:
+                self.blueResultWindow.Show()
+            else:
+                return self.blueResultWindow.blueResult
 
     def GetTextInputField(self, inText):
         ''' Retorna uma wx.BoxSizer(wx.HORIZONTAL) e a referência para o textField em uma tupla.\n

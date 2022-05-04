@@ -11,6 +11,7 @@ if __name__ == '__main__':
     app = wx.App()
 
     gv.welcome_screen = welcome_screen.WelcomeWindow(None, 'LOH / LENHS')
+    gv.welcome_screen.CenterOnScreen()
     gv.welcome_screen.Show()
 
     app.MainLoop()

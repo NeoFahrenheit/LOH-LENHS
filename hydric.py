@@ -20,11 +20,13 @@ import water_database
 class HydricBalance(wx.Frame):
     """ Cria a janela de `Balanço Hídrico de Reservatório`. """
 
-    def __init__(self, parent):
+    def __init__(self, parent, isToSave=False, path=''):
         style = wx.DEFAULT_FRAME_STYLE & (~wx.MAXIMIZE_BOX) & (~wx.RESIZE_BORDER)
         super().__init__(parent, style=style)
 
         self.parent = parent
+        self.isToSave = isToSave
+        self.path = path
         self.WINDOW_NAME = 'Balanço Hídrico de Reservatório'
 
         self.menu = wx.MenuBar()
@@ -621,6 +623,38 @@ class HydricBalance(wx.Frame):
             self.isSaved = True
             self.updateTitleName()
 
+    def getOpt1Fields(self):
+        ''' Returna uma lista de tuplas com os dados do primeiro formulário. '''
+
+        soma_vazao = 0
+        for value in self.getVazaoValues(0):
+            soma_vazao += float(value)
+
+        return [
+            ('Volume útil', 'm³', self.opt1Fields[0].GetValue()),
+            ('Volume mínimo', 'm³', self.opt1Fields[1].GetValue()),
+            ('Volume máximo', 'm³', self.opt1Fields[2].GetValue()),
+            ('Dias de simulação', '', self.opt1Fields[4].GetValue()),
+            ('Volume inicial', 'm³', self.opt1Fields[5].GetValue()),
+            ('Soma da vazão das bombas', 'm³/s', str(soma_vazao)),
+        ]
+
+    def getOpt2Fields(self):
+        ''' Returna uma lista de tuplas com os dados do primeiro formulário. '''
+
+        soma_vazao = 0
+        for value in self.getVazaoValues(1):
+            soma_vazao += float(value)
+
+        return [
+            ('Área da base', 'm²', self.opt2Fields[0].GetValue()),
+            ('Nível mínimo', 'm', self.opt2Fields[1].GetValue()),
+            ('Nível máximo', 'm', self.opt2Fields[2].GetValue()),
+            ('Dias de simulação', '', self.opt2Fields[4].GetValue()),
+            ('Nível inicial', 'm', self.opt2Fields[5].GetValue()),
+            ('Soma da vazão das bombas', 'm³/s', str(soma_vazao)),
+        ]
+
     def gatherData(self, ID):
         ''' Prepara os dados para exibição. '''
 
@@ -659,7 +693,7 @@ class HydricBalance(wx.Frame):
         else:
             minsBelowZero = self.calculateData(ID, volInicial, volMaximo, volMinimo, vazoesSum, diasSim, area)
 
-        self.plotGraphVolume(volMaximo, minsBelowZero)
+        self.plotGraphVolume(ID, volMaximo, minsBelowZero)
 
     def OnVolume(self, event):
         ''' Chamada quando o usuário clica no botão para desenhar o gráfico de volume instantâneo. '''
@@ -769,7 +803,7 @@ class HydricBalance(wx.Frame):
                     minutesBelowZero += 1
                     wereBelowZero = True
 
-        if wereBelowZero:
+        if wereBelowZero and not self.isToSave:
             dlg = wx.MessageDialog(self, f'A vazão bombeada não conseguiu atender a demanda do consumo de água por {(minutesBelowZero / 60):.1f} horas.',
             'Vazão insuficiente', wx.ICON_INFORMATION)
             dlg.ShowModal()
@@ -844,7 +878,7 @@ class HydricBalance(wx.Frame):
                     minutesBelowZero += 1
                     wereBelowZero = True
 
-        if wereBelowZero:
+        if wereBelowZero and not self.isToSave:
             dlg = wx.MessageDialog(self, f'A vazão bombeada não conseguiu atender a demanda do consumo de água por {(minutesBelowZero / 60):.1f} horas.',
             'Vazão insuficiente', wx.ICON_INFORMATION)
             dlg.ShowModal()
@@ -868,73 +902,7 @@ class HydricBalance(wx.Frame):
 
         return minutesBelowZero
 
-
-    # def getMinutos_1(self, minutos, VAI, LIGA, wereBelowZero, minutesBelowZero, volInicial, volMaximo, volMinimo, vazoesSum):
-    #     ''' Calcula a progressão das variáveis minutos, VAI e LIGA, etc, para o formulário 1. '''
-
-    #     # Calcula a evolução do reservatório e da bomba
-    #     for i in range(0, len(minutos)):
-    #         if i == 0:
-    #             if (volInicial - minutos[i]) >= volMinimo and (volInicial - minutos[i]) <= volMaximo:
-    #                 Qbomba_total = vazoesSum * 0
-    #                 LIGA.append(0)
-    #                 VAI.append(Qbomba_total - minutos[i] + volInicial)
-
-    #             if (volInicial - minutos[i]) < volMinimo:
-    #                 Qbomba_total = vazoesSum * 60
-    #                 LIGA.append(1)
-    #                 VAI.append(Qbomba_total - minutos[i] + volInicial)
-
-    #         else:
-    #             if ((VAI[i - 1] - minutos[i] < volMinimo) and (LIGA[i - 1] == 0)) or ((LIGA[i - 1] == 1) and (VAI[i - 1] - minutos[i] < volMaximo)):
-    #                 Qbomba_total = vazoesSum * 60
-    #                 LIGA.append(1)
-    #                 VAI.append(Qbomba_total - minutos[i] + VAI[i - 1])
-
-    #             if ((VAI[i - 1] - minutos[i] > volMinimo) and (LIGA[i - 1] == 0)) or (LIGA[i - 1] == 1 and (VAI[i - 1] - minutos[i] > volMaximo)):
-    #                 Qbomba_total = vazoesSum * 0
-    #                 LIGA.append(0)
-    #                 VAI.append(Qbomba_total - minutos[i] + VAI[i - 1])
-
-    #             if VAI[i] < 0:
-    #                 VAI[i] = 0
-    #                 wereBelowZero = True
-    #                 minutesBelowZero += 1
-
-
-    # def getMinutos_2(self, minutos, VAI, LIGA, wereBelowZero, minutesBelowZero, volInicial, volMaximo, volMinimo, vazoesSum, area):
-    #     ''' Calcula a progressão das variáveis minutos, VAI e LIGA, etc, para o formulário 2. '''
-
-    #     # Calcula a evolução do reservatório e da bomba
-    #     for i in range(0, len(minutos)):
-    #         if i == 0:
-    #             if ( (volInicial - minutos[i]) / area) >= volMinimo / area and (volInicial - minutos[i]) / area <= volMaximo / area:
-    #                 Qbomba_total = vazoesSum * 0
-    #                 LIGA.append(0)
-    #                 VAI.append( (Qbomba_total - minutos[i] + volInicial) / area )
-
-    #             if (volInicial - minutos[i]) < volMinimo:
-    #                 Qbomba_total = vazoesSum * 60
-    #                 LIGA.append(1)
-    #                 VAI.append( (Qbomba_total - minutos[i] + volInicial) / area )
-
-    #         else:
-    #             if (((VAI[i - 1] - minutos[i]) / area < volMinimo / area) and (LIGA[i - 1] == 0)) or ((LIGA[i - 1] == 1) and ((VAI[i - 1] - minutos[i]) / area < volMaximo / area)):
-    #                 Qbomba_total = vazoesSum * 60
-    #                 LIGA.append(1)
-    #                 VAI.append( (Qbomba_total - minutos[i] + VAI[i - 1]) / area)
-
-    #             if (((VAI[i - 1] - minutos[i]) / area > volMinimo / area) and (LIGA[i - 1] == 0)) or (LIGA[i - 1] == 1 and ((VAI[i - 1] - minutos[i]) / area > volMaximo / area)):
-    #                 Qbomba_total = vazoesSum * 0
-    #                 LIGA.append(0)
-    #                 VAI.append( (Qbomba_total - minutos[i] + VAI[i - 1]) / area)
-
-    #             if VAI[i] < 0:
-    #                 VAI[i] = 0
-    #                 minutesBelowZero += 1
-    #                 wereBelowZero = True
-
-    def plotGraphVolume(self, volMaximo, minsBelowZero):
+    def plotGraphVolume(self, ID, volMaximo, minsBelowZero):
         ''' Plota o gráfico da análise de volume. '''
 
         x = []
@@ -954,7 +922,12 @@ class HydricBalance(wx.Frame):
 
         plt.suptitle('Análise do volume do reservatório', x=0.07, y=0.98, ha='left', fontsize=15)
         ax.set_xlabel('Dia')
-        ax.set_ylabel('Volume (m³)')
+
+        if ID == 0:
+            yLabel = 'Volume (m³)'
+        else:
+            yLabel = 'Nível (m)'
+        ax.set_ylabel(yLabel)
 
         # estiliza o grid
         ax.set_axisbelow(True)
@@ -974,7 +947,11 @@ class HydricBalance(wx.Frame):
         ax.plot(x, yBomb, '--', color='red', alpha=0.4, label='Funcionamento da bomba')
         plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), fancybox=True, shadow=True, ncol=3)
         plt.tight_layout()
-        plt.show()
+
+        if self.isToSave:
+            plt.savefig(f'{self.path}\\opt{ID}.png', bbox_inches='tight')
+        else:
+            plt.show()
 
     def OnBombs(self, event):
         ''' Chamada quando é digitado qualquer coisa nos campos de número de bombas. '''

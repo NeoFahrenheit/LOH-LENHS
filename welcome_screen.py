@@ -5,7 +5,6 @@ onde o usuario pode escolher com que tipo de função ele quer trabalhar.
 """
 
 import wx
-import os
 import global_variables as gv
 import file_manager as fm
 import water_consumption
@@ -14,8 +13,10 @@ import energy_consumption
 import custos
 import hydric
 import database
+import pdf_export
+import about
 
-SOFTWARE_NAME = 'IOH / LENHS'
+SOFTWARE_NAME = 'LENHS / Diagnóstico Hidroenergético'
 
 ACTIVATED_COLOR = '#c9f0c0'
 HOVERED_COLOR = '#b0ff9e'
@@ -35,30 +36,35 @@ class WelcomeWindow(wx.Frame):
         style = wx.DEFAULT_FRAME_STYLE & (~wx.MAXIMIZE_BOX) & (~wx.RESIZE_BORDER)
         wx.Frame.__init__(self, parent, title=title, style=style)
 
+        self.version = 1.0
         self.toolbar = self.CreateToolBar()
-        self.SetMinSize((691, 597))
-        self.SetMaxSize((691, 597))
-        self.CenterOnScreen()
 
         # Criando a caixa de texto.
         self.welcomeMessage = wx.StaticText(self, label = MSG)
 
         # Vai receber a referencia da janela que o usuario escolher trabalhar.
         self.working_window = None
-
         self.databaseWindow = None
 
         self.setupToolbar(self.toolbar)
         self.init_buttons()
+
+        self.CentreOnScreen()
 
     def setupToolbar(self, toolbar):
         """ Inicializa a toolbar. """
 
         openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir arquivo')
         closeTool = toolbar.AddTool(wx.ID_CLOSE, 'Fechar', wx.Bitmap('images/close.png'), 'Fechar arquivo')
+        pdfTool = toolbar.AddTool(wx.ID_ANY, 'Relatório', wx.Bitmap('images/pdf.png'), 'Gerar relatório')
+        toolbar.AddSeparator()
+        infoTool = toolbar.AddTool(wx.ID_ABORT, 'Sobre', wx.Bitmap('images/info.png'), 'Sobre o software')
 
         self.Bind(wx.EVT_TOOL, self.OnOpenFile, openTool)
         self.Bind(wx.EVT_TOOL, self.OnCloseFile, closeTool)
+        self.Bind(wx.EVT_TOOL, self.OnPDF, pdfTool)
+        self.Bind(wx.EVT_TOOL, self.OnAbout, infoTool)
+
 
         self.toolbar.Realize()
 
@@ -114,7 +120,7 @@ class WelcomeWindow(wx.Frame):
         hSizer.Add(rightSizer, flag=wx.ALL, border=20)
 
         self.initRightBox(rightSizer)
-        self.SetSizer(hSizer)
+        self.SetSizerAndFit(hSizer)
 
     def initRightBox(self, box):
         ''' Inicializa o BoxSizer direito. '''
@@ -173,6 +179,23 @@ class WelcomeWindow(wx.Frame):
         self.custosBtn.SetBackgroundColour(wx.NullColour)
 
         self.SetTitle(f'{SOFTWARE_NAME}')
+
+    def OnPDF(self, event):
+        ''' Chamada quando o usuário clica para gerar o relatório em .pdf. '''
+
+        if not gv.opened_file:
+            dialog = wx.MessageDialog(self, 'Abra um arquivo para gerar o relatório em .pdf, por favor.', 'Arquivo não carregado', wx.ICON_ERROR)
+            dialog.ShowModal()
+            return
+
+        window = pdf_export.ExportPDF(self)
+        window.ShowModal()
+
+    def OnAbout(self, event):
+        ''' Chamada quando o usuário clica no botão Sobre. '''
+
+        window = about.About(self)
+        window.ShowModal()
 
     def refreshButtons(self):
         """ Atualiza o estado dos botoes e o titulo da janela conforme o arquivo aberto. """

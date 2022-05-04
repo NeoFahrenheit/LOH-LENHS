@@ -1,4 +1,7 @@
-""" Arquivo que inicializa a UI do programa """
+"""
+water_consumption.py
+Arquivo contém a classe de consumo de água.
+"""
 
 import os
 import wx
@@ -13,44 +16,6 @@ import global_variables as gv
 import graph_drawing
 import wx.grid as gridlib
 import table
-
-MSG = '''Use Tabela -> Gerar tabelas para preencher com datas e horários as respectivas colunas. Depois, entre com os dados de consumo na coluna 'Consumo de Água', com '.' para separador de casa decimal.\n
-Para desenhar o gráfico, basta ir em Arquivo -> Desenhar gráfico ou usar Ctrl + D.\n
-Use o Menu -> Importar para trazer informações de arquivos excel, csv ou txt.\n
-Não se esqueça de salvar seu trabalho antes de sair.
-'''
-
-class DocTextBox(wx.Frame):
-    """ Classe responsavel pela caixa de texto que contem as instrucoes para usar o programa """
-
-    def __init__(self, parent):
-        style = wx.DEFAULT_FRAME_STYLE & (~wx.MAXIMIZE_BOX)
-        super().__init__(parent, style=style)
-
-        text_field = wx.StaticText(self, name='Utilizando o programa')
-        text_field.SetLabel(MSG)
-
-        self.parent = parent
-        self.SetTitle('Instruções de uso')
-
-        self.SetMinSize((400, 400))
-        self.SetMaxSize((400, 400))
-
-        self.SetBackgroundColour(wx.NullColour)
-        self.CenterOnParent()
-
-        tableBox = wx.BoxSizer(wx.VERTICAL)
-        tableBox.Add(text_field, -1, flag=wx.ALL, border=5)
-        self.SetSizer(tableBox)
-
-        self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
-
-    def OnCloseWindow(self, event):
-        ''' Funcao chamada quando o usuário clica no botao de fechar no canto superior direito. '''
-
-        self.Destroy()
-        self.parent.docWindow = None
-
 
 class CreateWaterWindow(wx.Frame):
     """ Cria o frame basico para a inicializacao do app. """
@@ -68,14 +33,11 @@ class CreateWaterWindow(wx.Frame):
         self.toolbar = wx.ToolBar(self)
         self.quick_toolbar = wx.ToolBar(self)
 
-        self.CenterOnScreen()
-
         # Inicialização das variaveis.
         self.isSaved = True
         self.isErrors = False
         self.CellErrorsList = []
 
-        self.docWindow = None       # Janela de ajuda
         self.dataWindow = None      # Janela para adicionar e removar datas.
         self.conversorWindow = None # Janela do conversor de unidades
         self.databaseWindow = None  # Janela do banco de dados.
@@ -91,6 +53,7 @@ class CreateWaterWindow(wx.Frame):
 
         # Bind do evento quando o usuário clica no X da janela para sair.
         self.Bind(wx.EVT_CLOSE, self.close_app)
+        self.CenterOnScreen()
 
     def OnInit(self, menu):
         """ Inicializa a UI. """
@@ -99,7 +62,6 @@ class CreateWaterWindow(wx.Frame):
         self.setup_arquivo_menu(menu)
         self.setup_tabela_menu(menu)
         self.setup_tools_menu(menu)
-        self.setup_ajuda_menu(menu)
         self.SetMenuBar(menu)
 
         # Cria a toolbar.
@@ -124,11 +86,11 @@ class CreateWaterWindow(wx.Frame):
         hBox.Add(self.rightSizer, flag=wx.LEFT | wx.EXPAND, border=1)
         self.masterSizer.Add(hBox)
 
-        self.SetSizer(self.masterSizer)
+        self.SetSizerAndFit(self.masterSizer)
 
-        # self.SetSize((782, 656))
-        self.SetMinSize((782, 656))
-        self.SetMaxSize((782, 656))
+        # self.SetSize((782, 640))
+        self.SetMinSize((782, 640))
+        self.SetMaxSize((782, 640))
         self.SetTitle(f'{self.WINDOW_NAME}')
 
     def setup_arquivo_menu(self, menu):
@@ -171,17 +133,6 @@ class CreateWaterWindow(wx.Frame):
 
         # Adicionar o Menu a barra superior.
         menu.Append(file_menu, '&Arquivo')
-
-    def setup_ajuda_menu(self, menu):
-        """ Inicializa o menu 'Ajuda' """
-
-        ajuda_menu = wx.Menu()
-        doc_menu_item = ajuda_menu.Append(wx.ID_HELP, 'Como usar', 'Documentação do Consumo de Água')
-
-        self.Bind(wx.EVT_MENU, self.on_doc, doc_menu_item)
-
-        menu.Append(ajuda_menu, 'Ajuda')
-
 
     def setup_tabela_menu(self, menu):
         """ Inicializa o menu 'Tabela' """
@@ -240,8 +191,8 @@ class CreateWaterWindow(wx.Frame):
     def setup_quickToolbar(self, toolbar):
         ''' Inicializa a toolbar secundaria. '''
 
-        add_table = toolbar.AddTool(wx.ID_ANY, 'Inserir dados', wx.Bitmap('images/add_table.png'), 'Adicionar data')
-        delete_table = toolbar.AddTool(wx.ID_ANY, 'Deletar dados', wx.Bitmap('images/delete_table.png'), 'Remover data')
+        add_table = toolbar.AddTool(wx.ID_ANY, 'Inserir dados', wx.Bitmap('images/add.png'), 'Adicionar data')
+        delete_table = toolbar.AddTool(wx.ID_ANY, 'Deletar dados', wx.Bitmap('images/remove.png'), 'Remover data')
 
         self.Bind(wx.EVT_TOOL, self.OnAddDataWindow, add_table)
         self.Bind(wx.EVT_TOOL, self.OnDeleteDataWindow, delete_table)
@@ -269,13 +220,6 @@ class CreateWaterWindow(wx.Frame):
         self.graphBox.Add(self.calendarWindow)
         self.graphBox.ShowItems(False)
         self.rightSizer.Add(self.graphBox)
-
-    def on_doc(self, event):
-        """ Chamada quando o usuário clica no menu Ajuda -> Como usar """
-
-        if not self.docWindow:
-            self.docWindow = DocTextBox(self)
-            self.docWindow.Show()
 
     def OnQuit(self, event, is_exit):
         """ Chamada quando o usuário tentar sair do app.
@@ -308,6 +252,7 @@ class CreateWaterWindow(wx.Frame):
         self.Destroy()
         if is_exit:
             gv.welcome_screen.destroy_()
+            self.Layout()
         else:
             gv.welcome_screen.show_()
 
@@ -681,6 +626,17 @@ class CreateWaterWindow(wx.Frame):
         self.rightSizer.Layout()
 
 
+    def SaveOverallGraph(self, path):
+        ''' Ao invés de exibir na tela, salva em ``dir`` o gráfico de consumo geral e destroi a janela. '''
+
+        self.table.transferTableToList(self.data)
+        daysList = dp.getTableReadyData(self.data)
+        self.calendarWindow.data = daysList
+
+        self.calendarWindow.isSaveToDisk = True
+        self.calendarWindow.path = path
+        self.calendarWindow.OnSummary(None)
+
     def SaveFile(self):
         """ Responsável por salvar o arquivo. Supõe que já existe um arquivo aberto. """
 
@@ -951,11 +907,11 @@ class AddDateTime(wx.Frame):
 
         self.parent = parent
         self.SetTitle('Adicionar dados')
-        self.CenterOnParent()
 
         self.setupUI()
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
+        self.CenterOnParent()
 
     def setupUI(self):
         ''' Popula o tableBox com os elementos da janela. '''
@@ -990,7 +946,6 @@ class AddDateTime(wx.Frame):
         button.Bind(wx.EVT_BUTTON, self.OnAddToGrid)
 
         self.masterSizer.Add(button, flag=wx.ALIGN_CENTRE | wx.ALL, border=10)
-
         self.SetSizerAndFit(self.masterSizer)
 
     def OnAddToGrid(self, event):

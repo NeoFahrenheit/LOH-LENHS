@@ -16,6 +16,8 @@ class GraphCalendar(wx.Panel):
         wx.Panel.__init__(self, parent, style=style)
 
         self.SetBackgroundColour('#e3e3e8')
+        self.isSaveToDisk = False
+        self.path = ''
 
         self.data = data
         self.consumption = []
@@ -109,6 +111,8 @@ class GraphCalendar(wx.Panel):
         else:
             self._plot_graph(self.data[ID], f"{self.data[ID]['date']}", False, index=ID)
 
+
+
     def OnSummary(self, event):
         """ Chamada quando o usuário clica no botão para desenhar o gráfico geral. """
 
@@ -171,7 +175,10 @@ class GraphCalendar(wx.Panel):
         ax.xaxis.grid(color='gray', linestyle='dashed', alpha=0.2)
 
         self._draw_graph_info(ax, fig, y, isBigger, isSummary, index)
-        plt.show()
+        if self.isSaveToDisk:
+            plt.savefig(self.path, bbox_inches='tight')
+        else:
+            plt.show()
 
     def _draw_graph_info(self, ax, fig, y_list, isBigger, isSummary, index):
         """ Imprime informacoes no gráfico.

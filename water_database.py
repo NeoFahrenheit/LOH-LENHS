@@ -23,7 +23,6 @@ class WaterDataBase(wx.Frame):
 
         self.SetTitle('Consumo de Água - Banco de Dados')
         self.SetBackgroundColour(gv.BACKGROUND_COLOR)
-        self.CenterOnScreen()
 
         self.waterData = []
         self.checkBoxRefs = []
@@ -42,6 +41,7 @@ class WaterDataBase(wx.Frame):
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
         self.Layout()
+        self.CenterOnScreen()
 
     def setupSizers(self):
         ''' Inicializa os sizers. '''
@@ -386,9 +386,10 @@ class WaterDataBase(wx.Frame):
         ''' Função chamada quando o usuario clica no botao de fechar no canto superior direito. '''
 
         self.parent.Show()
-        self.parent.waterWindow = None
 
+        self.parent.waterWindow = None
         self.Destroy()
+
 
     #### ----------------------------------------------------- ####
     #### Inicialização das variáveis de exibição e de cálculo. ####

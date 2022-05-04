@@ -53,14 +53,14 @@ class PumpWindow(wx.Panel):
         self.grid.SetColSize(1, 130)
 
         masterSizer.Add(self.toolbar, flag=wx.EXPAND)
-        masterSizer.Add(self.grid, 1, wx.EXPAND)
+        masterSizer.Add(self.grid, 1, flag=wx.EXPAND)
 
         self.SetSizer(masterSizer)
 
     def initToolbar(self):
         ''' Inicializa a toolbar. '''
 
-        clear_tool = self.toolbar.AddTool(-1, 'Limpar tabela', wx.Bitmap('images/delete_table.png'), 'Limpar tabela')
+        clear_tool = self.toolbar.AddTool(-1, 'Limpar tabela', wx.Bitmap('images/remove.png'), 'Limpar tabela')
         draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('images/graph.png'), 'Desenhar gráfico')
         info_tool = self.toolbar.AddTool(wx.ID_INFO, 'Ajuda', wx.Bitmap('images/info.png'), 'Ajuda')
 
@@ -429,8 +429,11 @@ class PumpWindow(wx.Panel):
         self.valeur_min = np.array(self.h)
         self.P2 = np.polyfit(self.valeur_T, self.valeur_min, 2)
 
-    def plotGraph(self):
+    def plotGraph(self, isToSave=False, path=''):
         ''' Desenha o gráfico. '''
+
+        if isToSave:
+            self.checkAndTransferToLists()
 
         self.calcultaP2()
         p = np.poly1d(self.P2)
@@ -468,7 +471,11 @@ class PumpWindow(wx.Panel):
         plt.legend(loc='best')
 
         plt.tight_layout()
-        plt.show()
+
+        if isToSave:
+            plt.savefig(path, bbox_inches='tight')
+        else:
+            plt.show()
 
 
 class SystemWindow(wx.Panel):
@@ -843,8 +850,14 @@ class SystemWindow(wx.Panel):
                 self.h.append(self.calculateAMT(vazao))
 
 
-    def plotGraph(self, q):
+    def plotGraph(self, q, isToSave=False, path=''):
         ''' Desenha o gráfico. '''
+
+        if isToSave:
+            win = PumpWindow(self)
+            win.checkAndTransferToLists()
+            q = win.q
+            win.Destroy()
 
         self.HG = float(self.geoInput.GetValue())   # Desnivel geometrico (m)
         self.L = float(self.tubInput.GetValue())    # Comprimento da tubulação (m)
@@ -877,9 +890,12 @@ class SystemWindow(wx.Panel):
 
         plt.plot(arr[0], arr[1], '-', label='Curva do Sistema', color='r')
         plt.legend(loc='best')
-
         plt.tight_layout()
-        plt.show()
+
+        if isToSave:
+            plt.savefig(path, bbox_inches='tight')
+        else:
+            plt.show()
 
     def calculateAMT(self, vazao):
         ''' Calcula o valor da altura nanometrica. '''
@@ -914,6 +930,8 @@ class SystemWindow(wx.Panel):
     def getSumInputValue(self):
         ''' Chamada para conseguir um valor para o somatório dos coeficientes de singularidade, quando este
         não for preenchido. '''
+
+        self.KS = 0
 
         for i in range(0, 7):
             if i == 0:
@@ -1249,7 +1267,7 @@ class OperationPoint(wx.Panel):
 
         self.D = self.D / 1000
 
-    def plotGraph(self):
+    def plotGraph(self, isToSave=False, path=''):
         ''' Desenha o gráfico. '''
 
         self.getSystemVariables()
@@ -1271,7 +1289,12 @@ class OperationPoint(wx.Panel):
         ax.spines['right'].set_visible(False)
         ax.spines['top'].set_visible(False)
 
-        self.getATMValues()
+        self.getATMValues(isToSave)
+
+        if isToSave:
+            plt.savefig(path, bbox_inches='tight')
+        else:
+            plt.show()
 
     def calculateReynolds(self, vazao):
         ''' Calcula o valor da altura nanometrica. '''
@@ -1305,7 +1328,7 @@ class OperationPoint(wx.Panel):
     def curveFitHelper(self, X, C, d):
         return C * pow(X, d)
 
-    def getATMValues(self):
+    def getATMValues(self, isToSave=False):
         ''' Gera um dado na lista operation_Y para cada valor na lista q (Curva da Bomba). '''
 
         self.HPL = []
@@ -1344,30 +1367,31 @@ class OperationPoint(wx.Panel):
         # Curva da Bomba
         arrPump = dp.smoothGraph(xDataCopy, yDataCopy)
         eq = self.getPumpCurveEquation()
-        plt.plot(arrPump[0], arrPump[1], '-', label=eq, color='b')
+        newX = dp.cutLastPieceGraph(arrPump[0], 5)
+        newY = dp.cutLastPieceGraph(arrPump[1], 5)
+        plt.plot(newX, newY, '-', label=eq, color='b')
 
         # Curva do Sistema
         arrSystem = dp.smoothGraph(self.xData, AMT)
+
         plt.plot(arrSystem[0], arrSystem[1], '-', color='r', label=f'{B}Q² + {C}Q^{d} + {HG}')
         plt.plot(self.xData, AMT, 'o', color='black')
 
         try:
             x, y = intersection(arrPump[0], arrPump[1], arrSystem[0], arrSystem[1])
             plt.plot(x, y, 'ro', label=f'Interseção [{"{:.4f}".format(x[0])}, {"{:.4f}".format(y[0])}]', color='green')
-
             plt.annotate('Ponto de operação', xy=(x[0], y[0]), xycoords='data', xytext=(0.8, 0.95),
             textcoords='axes fraction', arrowprops=dict(facecolor='green', shrink=0.05), horizontalalignment='right', verticalalignment='top')
 
             self.intersect = (x[0], y[0])
-            self.updateVazaoAltura()
+            self.updateVazaoAltura(isToSave)
         except:
             pass
 
         plt.legend(loc='lower right')
         plt.tight_layout()
-        plt.show()
 
-    def updateVazaoAltura(self):
+    def updateVazaoAltura(self, isToSave=False):
         ''' Atualiza o campos de Vazao Bombeada e Altura Nanometrica em Parametros do Sistema. '''
 
         textRef_0 = self.parent.textBoxesRefs[0]
@@ -1387,9 +1411,10 @@ class OperationPoint(wx.Panel):
             self.parent.isSaved = False
             self.parent.updateTitleName()
 
-        dlg = wx.MessageDialog(self, 'As variáveis Vazão Bombeada e Altura Nanométrica em Parâmetros do Sistema foram atualizadas com os valores do ponto de interseção.',
-        'Informações atualizadas', wx.ICON_INFORMATION)
-        dlg.ShowModal()
+        if not isToSave:
+            dlg = wx.MessageDialog(self, 'As variáveis Vazão Bombeada e Altura Nanométrica em Parâmetros do Sistema foram atualizadas com os valores do ponto de interseção.',
+            'Informações atualizadas', wx.ICON_INFORMATION)
+            dlg.ShowModal()
 
 
     def getPumpCurveEquation(self):

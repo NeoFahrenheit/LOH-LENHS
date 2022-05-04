@@ -15,7 +15,8 @@ def getFileExtension(filename):
 
 
 def putFileSuffix(filename, suffix):
-    ''' Verifica se filename ja possui o sufixo informado. Se nao, adiciona e retorna filename modificado.'''
+    ''' Verifica se filename ja possui o sufixo informado. Se nao, adiciona e retorna filename modificado.
+    Caso contrário, retorna filename não modificado. '''
 
     size = len(suffix)
     fileSuffix = filename[-size:]

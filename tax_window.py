@@ -1,3 +1,4 @@
+from pydoc import isdata
 import wx
 import energy_consumption
 import parameters
@@ -5,9 +6,11 @@ import parameters
 class ResultWindow(wx.Frame):
     ''' Classe responsavel pela criacao das janelas de calculo das Tarifas Verdes e Azuis. '''
 
-    def __init__(self, parent, color, aliFields, greenFields, blueFields):
+    def __init__(self, parent, color, aliFields, greenFields, blueFields, isDataOnly=False):
         style = wx.DEFAULT_FRAME_STYLE & (~wx.MAXIMIZE_BOX)
         wx.Frame.__init__(self, parent, style=style)
+
+        self.isDataOnly = isDataOnly
 
         self.grabDataFromFile()
         self.parent = parent
@@ -87,6 +90,17 @@ class ResultWindow(wx.Frame):
         CMEE = CTEE / self.consumoTotal
         CMMB = CTEE / self.volumeBombeado
 
+        if self.isDataOnly:
+            self.greenResult = [
+                ('Custo de Energia Elétrica na Ponta', '(R$/mês)', self.returnFormatted(CEEP)),
+                ('Custo de Energia Elétrica Fora da Ponta', '(R$/mês)', self.returnFormatted(CEEFP)),
+                ('Custo da Demanda', '(R$/mês)', self.returnFormatted(CD)),
+                ('Custo Total de Energia Elétrica', '(R$/mês)', self.returnFormatted(CTEE)),
+                ('Custo Médio da Energia Elétrica', '(R$/mês)', self.returnFormatted(CMEE)),
+                ('Custo Médio por m³ de Água Bombeado', '(R$/m³)', self.returnFormatted(CMMB))
+            ]
+            return
+
         self.sizer.Add(self.getDisplayField(' Custo de Energia Elétrica na Ponta \t(R$/mês)', self.returnFormatted(CEEP)), flag=wx.TOP | wx.BOTTOM, border=3)
         self.sizer.Add(self.getDisplayField(' Custo de Energia Elétrica Fora da Ponta(R$/mês)', self.returnFormatted(CEEFP)), flag=wx.TOP | wx.BOTTOM, border=3)
         self.sizer.Add(self.getDisplayField(' Custo da Demanda \t\t\t(R$/mês)', self.returnFormatted(CD)), flag=wx.TOP | wx.BOTTOM, border=3)
@@ -115,6 +129,18 @@ class ResultWindow(wx.Frame):
         CMEE = CTEE / self.consumoTotal
         CMMB = CTEE / self.volumeBombeado
 
+        if self.isDataOnly:
+            self.blueResult = [
+                ('Custo de Energia Elétrica na Ponta', '(R$/mês)', self.returnFormatted(CEEP)),
+                ('Custo de Energia Elétrica Fora da Ponta', '(R$/mês)', self.returnFormatted(CEEFP)),
+                ('Custo da Demanda na Ponta', '(R$/mês)', self.returnFormatted(CDP)),
+                ('Custo da Demanda Fora da Ponta', '(R$/mês)', self.returnFormatted(CDFP)),
+                ('Custo Total de Energia Elétrica', '(R$/mês)', self.returnFormatted(CTEE)),
+                ('Custo Médio da Energia Elétrica', '(R$/kWh)', self.returnFormatted(CMEE)),
+                ('Custo Médio por m³ de Água Bombeado', '(R$/m³)', self.returnFormatted(CMMB))
+            ]
+            return
+
         self.sizer.Add(self.getDisplayField(' Custo de Energia Elétrica na Ponta \t(R$/mês)', self.returnFormatted(CEEP)), flag=wx.TOP | wx.BOTTOM, border=3)
         self.sizer.Add(self.getDisplayField(' Custo de Energia Elétrica Fora da Ponta(R$/mês)', self.returnFormatted(CEEFP)), flag=wx.TOP | wx.BOTTOM, border=3)
         self.sizer.Add(self.getDisplayField(' Custo da Demanda na Ponta \t\t(R$/mês)', self.returnFormatted(CDP)), flag=wx.TOP | wx.BOTTOM, border=3)
@@ -124,6 +150,7 @@ class ResultWindow(wx.Frame):
         self.sizer.Add(self.getDisplayField(' Custo Médio por m³ de Água Bombeado \t(R$/m³)', self.returnFormatted(CMMB)), flag=wx.TOP | wx.BOTTOM, border=3)
 
         self.SetSizer(self.sizer)
+
 
     def grabDataFromFile(self):
         ''' Funcao retira todas as informações necessárias do arquivo e retorna True se todas as variaveis e informações necessarias

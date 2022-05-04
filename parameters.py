@@ -44,6 +44,7 @@ class ParametersWindow(wx.Frame):
         self.toolbar = self.CreateToolBar()
         self.menu = wx.MenuBar()
         self.status_bar = self.CreateStatusBar()
+        self.isToSave = False
 
         self.isSaved = True
         self.isThereErrors = False
@@ -61,7 +62,6 @@ class ParametersWindow(wx.Frame):
         self.curSelected = 1
 
         self.SetTitle(f'{self.WINDOW_NAME}')
-        self.CenterOnScreen()
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseApp)
 
@@ -71,9 +71,10 @@ class ParametersWindow(wx.Frame):
         self.SetMenuBar(self.menu)
 
         self.setupUI()
-        self.SetSize((727, 657))
+        #self.SetSize((727, 640))
 
         self.LoadFile()
+        self.CenterOnScreen()
 
     def setupMenuBar(self, menu):
         """ Inicializa o menu. """
@@ -154,7 +155,6 @@ class ParametersWindow(wx.Frame):
 
         leftSizer = wx.BoxSizer(wx.VERTICAL)
         self.rightSizer = wx.BoxSizer(wx.VERTICAL)
-        self.rightSizer.SetMinSize((343, 533))
         hBox.Add(leftSizer)
         hBox.Add(self.rightSizer)
 
@@ -711,6 +711,13 @@ class ParametersWindow(wx.Frame):
         if not self.databaseWindow:
             self.databaseWindow = database.Database(self)
             self.databaseWindow.Show()
+
+    def SaveAllGraphs(self, path):
+        ''' Salva todos os gráficos. '''
+
+        self.pumpRef.plotGraph(True, f'{path}\\pump.png')
+        self.systemRef.plotGraph(None, True, f'{path}\\system.png')
+        self.operationRef.plotGraph(True, f'{path}\\operation.png')
 
     def OnPump(self, event):
         ''' Chamada quando o usuário clicar no botão ``Curva da Bomba`` na parte inferior da janela. '''

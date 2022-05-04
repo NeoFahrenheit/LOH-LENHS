@@ -88,7 +88,7 @@ class Database(wx.Frame):
         self.Destroy()
 
 
-class Taxes(wx.Frame):
+class Taxes(wx.Dialog):
     ''' Classe responsável pela janela de Impostos dentro do banco de dados. '''
 
     def __init__(self, parent):
@@ -97,7 +97,6 @@ class Taxes(wx.Frame):
 
         self.SetTitle('Impostos')
         self.SetBackgroundColour(gv.BACKGROUND_COLOR)
-        self.CentreOnScreen()
 
         self.parent = parent
 
@@ -105,6 +104,7 @@ class Taxes(wx.Frame):
         self.initUI()
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
+        self.CentreOnParent()
 
     def getPIS_COFINS_Ctrl(self):
         ''' Cria e inicializa a wx.ListCtrl com as informações do PIS e COFINS e retorna a referência. '''
@@ -220,7 +220,7 @@ class Taxes(wx.Frame):
         self.Destroy()
 
 
-class Rendimento(wx.Frame):
+class Rendimento(wx.Dialog):
     ''' Classe responsável pela janela "Rendimento de Motores Elétricos" do bando de dados. '''
 
     def __init__(self, parent):
@@ -229,7 +229,6 @@ class Rendimento(wx.Frame):
 
         self.SetTitle('Rendimentos de Motores Elétricos')
         self.SetBackgroundColour(gv.BACKGROUND_COLOR)
-        self.CentreOnScreen()
 
         self.parent = parent
         self.currentlySelectedCell = (0, 0)
@@ -242,6 +241,7 @@ class Rendimento(wx.Frame):
         self.grid.Bind(wx.EVT_KEY_DOWN, self.OnKey)
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
+        self.CentreOnParent()
 
     def initUI(self):
         ''' Inicializa a UI.'''

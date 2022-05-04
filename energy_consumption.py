@@ -43,7 +43,6 @@ class EnergyConsumption(wx.Frame):
         self.SetMinSize((691, 494))
         self.SetMaxSize((691, 494))
         self.SetTitle('Consumo de Energia e Indicadores Hidroenergeticos')
-        self.CenterOnScreen()
 
         self.Bind(wx.EVT_CLOSE, self.OnCloseApp)
 
@@ -55,6 +54,7 @@ class EnergyConsumption(wx.Frame):
         self.SetDoubleBuffered(True)
 
         self.getDataFromFile()
+        self.CenterOnParent()
 
     def initUI(self):
         """ Inicializa a UI. """
