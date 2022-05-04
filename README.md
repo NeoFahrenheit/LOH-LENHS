@@ -6,7 +6,8 @@ wxPython</br>
 matplotlib</br>
 numpy</br>
 openpyxl</br>
-csv
+fpdf2</br>
+unidecode</br>
 </br>
 </br>
 O programa deve ser executado a partir de *main.py*.
