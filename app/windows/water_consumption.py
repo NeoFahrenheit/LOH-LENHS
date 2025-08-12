@@ -7,15 +7,14 @@ import os
 import wx
 from openpyxl import load_workbook
 import csv
-import conversor
-import database
-import file_manager as fm
-import data_processing as dp
-import database
-import global_variables as gv
-import graph_drawing
+import app.windows.conversor as conversor
+import app.windows.database as database
+import app.file_manager as fm
+import app.data_processing as dp
+import app.global_variables as gv
+import app.windows.graph_drawing as graph_drawing
 import wx.grid as gridlib
-import table
+import app.windows.table as table
 
 class CreateWaterWindow(wx.Frame):
     """ Cria o frame basico para a inicializacao do app. """
@@ -169,13 +168,13 @@ class CreateWaterWindow(wx.Frame):
     def setup_toolbar(self, toolbar):
         """ Inicializa a toolbar. """
 
-        new_tool = toolbar.AddTool(wx.ID_NEW, 'Novo', wx.Bitmap('images/new.png'), 'Novo arquivo')
-        open_tool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir arquivo')
-        save_tool = toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('images/save.png'), 'Salvar arquivo')
-        draw_tool = toolbar.AddTool(wx.ID_ANY, 'Desenhar Gráfico', wx.Bitmap('images/graph.png'), 'Desenhar gráfico')
-        conversor_tool = toolbar.AddTool(wx.ID_ANY, 'Conversor de unidades', wx.Bitmap('images/calculator.png'), 'Conversor de unidades')
-        database_tool = toolbar.AddTool(wx.ID_ANY, 'Banco de Dados', wx.Bitmap('images/database.png'), 'Banco de dados')
-        home_tool = toolbar.AddTool(wx.ID_HOME, 'Voltar pra Home', wx.Bitmap('images/home.png'), 'Voltar para Home')
+        new_tool = toolbar.AddTool(wx.ID_NEW, 'Novo', wx.Bitmap('assets/images/new.png'), 'Novo arquivo')
+        open_tool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('assets/images/open.png'), 'Abrir arquivo')
+        save_tool = toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('assets/images/save.png'), 'Salvar arquivo')
+        draw_tool = toolbar.AddTool(wx.ID_ANY, 'Desenhar Gráfico', wx.Bitmap('assets/images/graph.png'), 'Desenhar gráfico')
+        conversor_tool = toolbar.AddTool(wx.ID_ANY, 'Conversor de unidades', wx.Bitmap('assets/images/calculator.png'), 'Conversor de unidades')
+        database_tool = toolbar.AddTool(wx.ID_ANY, 'Banco de Dados', wx.Bitmap('assets/images/database.png'), 'Banco de dados')
+        home_tool = toolbar.AddTool(wx.ID_HOME, 'Voltar pra Home', wx.Bitmap('assets/images/home.png'), 'Voltar para Home')
 
         # Funcoes de Binding. Estamos usando as mesmas para os itens do menu.
         self.Bind(wx.EVT_TOOL, self.OnNewFile, new_tool)
@@ -191,8 +190,8 @@ class CreateWaterWindow(wx.Frame):
     def setup_quickToolbar(self, toolbar):
         ''' Inicializa a toolbar secundaria. '''
 
-        add_table = toolbar.AddTool(wx.ID_ANY, 'Inserir dados', wx.Bitmap('images/add.png'), 'Adicionar data')
-        delete_table = toolbar.AddTool(wx.ID_ANY, 'Deletar dados', wx.Bitmap('images/remove.png'), 'Remover data')
+        add_table = toolbar.AddTool(wx.ID_ANY, 'Inserir dados', wx.Bitmap('assets/images/add.png'), 'Adicionar data')
+        delete_table = toolbar.AddTool(wx.ID_ANY, 'Deletar dados', wx.Bitmap('assets/images/remove.png'), 'Remover data')
 
         self.Bind(wx.EVT_TOOL, self.OnAddDataWindow, add_table)
         self.Bind(wx.EVT_TOOL, self.OnDeleteDataWindow, delete_table)

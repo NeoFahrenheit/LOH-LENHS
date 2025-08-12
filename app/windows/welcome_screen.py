@@ -5,16 +5,16 @@ onde o usuario pode escolher com que tipo de função ele quer trabalhar.
 """
 
 import wx
-import global_variables as gv
-import file_manager as fm
-import water_consumption
-import parameters
-import energy_consumption
-import custos
-import hydric
-import database
-import pdf_export
-import about
+import app.global_variables as gv
+import app.file_manager as fm
+import app.windows.water_consumption as water_consumption
+import app.windows.parameters as parameters
+import app.windows.energy_consumption as energy_consumption
+import app.windows.custos as custos
+import app.windows.hydric as hydric
+import app.windows.database as database
+import app.pdf_export as pdf_export
+import app.windows.about as about
 
 SOFTWARE_NAME = 'LENHS / Diagnóstico Hidroenergético'
 
@@ -54,11 +54,11 @@ class WelcomeWindow(wx.Frame):
     def setupToolbar(self, toolbar):
         """ Inicializa a toolbar. """
 
-        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir arquivo')
-        closeTool = toolbar.AddTool(wx.ID_CLOSE, 'Fechar', wx.Bitmap('images/close.png'), 'Fechar arquivo')
-        pdfTool = toolbar.AddTool(wx.ID_ANY, 'Relatório', wx.Bitmap('images/pdf.png'), 'Gerar relatório')
+        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('assets/images/open.png'), 'Abrir arquivo')
+        closeTool = toolbar.AddTool(wx.ID_CLOSE, 'Fechar', wx.Bitmap('assets/images/close.png'), 'Fechar arquivo')
+        pdfTool = toolbar.AddTool(wx.ID_ANY, 'Relatório', wx.Bitmap('assets/images/pdf.png'), 'Gerar relatório')
         toolbar.AddSeparator()
-        infoTool = toolbar.AddTool(wx.ID_ABORT, 'Sobre', wx.Bitmap('images/info.png'), 'Sobre o software')
+        infoTool = toolbar.AddTool(wx.ID_ABORT, 'Sobre', wx.Bitmap('assets/images/info.png'), 'Sobre o software')
 
         self.Bind(wx.EVT_TOOL, self.OnOpenFile, openTool)
         self.Bind(wx.EVT_TOOL, self.OnCloseFile, closeTool)
@@ -125,10 +125,10 @@ class WelcomeWindow(wx.Frame):
     def initRightBox(self, box):
         ''' Inicializa o BoxSizer direito. '''
 
-        iphImg = wx.Bitmap('images/iph_logo.png', wx.BITMAP_TYPE_ANY)
+        iphImg = wx.Bitmap('assets/images/iph_logo.png', wx.BITMAP_TYPE_ANY)
         iphBitmap = wx.StaticBitmap(self, -1, iphImg)
 
-        lensImg = wx.Bitmap('images/lenhs_logo.png', wx.BITMAP_TYPE_ANY)
+        lensImg = wx.Bitmap('assets/images/lenhs_logo.png', wx.BITMAP_TYPE_ANY)
         lensBitmap = wx.StaticBitmap(self, -1, lensImg)
 
         baseFont = wx.Font(10, wx.FONTFAMILY_ROMAN, wx.NORMAL, wx.NORMAL)

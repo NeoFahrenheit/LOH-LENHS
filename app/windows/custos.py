@@ -5,12 +5,12 @@ custos.py
 
 import wx
 import os
-import database
-import tax_window
-import conversor
-import global_variables as gv
-import file_manager as fm
-import data_processing as dp
+import app.windows.database as database
+import app.windows.tax_window as tax_window
+import app.windows.conversor as conversor
+import app.global_variables as gv
+import app.file_manager as fm
+import app.data_processing as dp
 
 GREEN = '#8e9c91'
 BLUE = '#9fa3e0'
@@ -103,12 +103,12 @@ class Custos(wx.Frame):
     def setupToolbar(self, toolbar):
         """ Inicializa a toolbar. """
 
-        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir arquivo')
-        saveTool = toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('images/save.png'), 'Salvar arquivo')
-        conversorTool = toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('images/calculator.png'), 'Conversor de unidades')
-        databaseTool = toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('images/database.png'), 'Banco de dados')
+        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('assets/images/open.png'), 'Abrir arquivo')
+        saveTool = toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('assets/images/save.png'), 'Salvar arquivo')
+        conversorTool = toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('assets/images/calculator.png'), 'Conversor de unidades')
+        databaseTool = toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('assets/images/database.png'), 'Banco de dados')
         toolbar.AddSeparator()
-        homeTool = toolbar.AddTool(wx.ID_HOME, 'Home', wx.Bitmap('images/home.png'), 'Voltar para Home')
+        homeTool = toolbar.AddTool(wx.ID_HOME, 'Home', wx.Bitmap('assets/images/home.png'), 'Voltar para Home')
 
         self.Bind(wx.EVT_TOOL, self.OnOpenFile, openTool)
         self.Bind(wx.EVT_TOOL, self.OnSaveFile, saveTool)

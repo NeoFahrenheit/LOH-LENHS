@@ -5,11 +5,11 @@ energy_consumption.py
 
 import wx
 import os
-import conversor
-import database
-import file_manager as fm
-import global_variables as gv
-import tooltip_frame as tf
+import app.windows.conversor as conversor
+import app.windows.database as database
+import app.file_manager as fm
+import app.global_variables as gv
+import app.windows.tooltip_frame as tf
 
 class EnergyConsumption(wx.Frame):
     """ Classe responsavel pela janela de Consumo de Energia e Indicadores Hidroenergeticos. """
@@ -113,11 +113,11 @@ class EnergyConsumption(wx.Frame):
     def setupToolbar(self, toolbar):
         """ Inicializa a toolbar. """
 
-        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir arquivo')
-        conversorTool = toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('images/calculator.png'), 'Conversor de unidades')
-        databaseTool = toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('images/database.png'), 'Banco de dados')
+        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('assets/images/open.png'), 'Abrir arquivo')
+        conversorTool = toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('assets/images/calculator.png'), 'Conversor de unidades')
+        databaseTool = toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('assets/images/database.png'), 'Banco de dados')
         toolbar.AddSeparator()
-        homeTool = toolbar.AddTool(wx.ID_HOME, 'Home', wx.Bitmap('images/home.png'), 'Voltar para Home')
+        homeTool = toolbar.AddTool(wx.ID_HOME, 'Home', wx.Bitmap('assets/images/home.png'), 'Voltar para Home')
 
         self.Bind(wx.EVT_TOOL, self.OnOpenFile, openTool)
         self.Bind(wx.EVT_TOOL, self.OnConversor, conversorTool)
@@ -281,7 +281,7 @@ class EnergyConsumption(wx.Frame):
         hBox.Add(rPanel)
 
         # Cria as tooltips
-        image = wx.Bitmap('images/question.png')
+        image = wx.Bitmap('assets/images/question.png')
         tooltip = wx.ToolTip(gv.tooltipList[index])
         tooltip.SetAutoPop(30_000)
         btn = wx.Button(self, id=1000 + index, size=(20, 20))

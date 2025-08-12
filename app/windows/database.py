@@ -9,8 +9,8 @@ import wx.richtext as rt
 import wx.grid as gridlib
 import matplotlib.pyplot as plt
 import json
-import water_database
-import global_variables as gv
+import app.windows.water_database as water_database
+import app.global_variables as gv
 
 class Database(wx.Frame):
     def __init__(self, parent):
@@ -202,13 +202,13 @@ class Taxes(wx.Dialog):
     def getTaxesValues(self):
         ''' Inicializa as listas com os valores dos impostos. '''
 
-        with open('files/pis_cofins.json', 'r', encoding='utf-8') as f:
+        with open('assets/files/pis_cofins.json', 'r', encoding='utf-8') as f:
             self.PIS_COFINS = json.load(f)
 
-        with open('files/pis_cofins_avarage.json', 'r', encoding='utf-8') as f:
+        with open('assets/files/pis_cofins_avarage.json', 'r', encoding='utf-8') as f:
             self.PIS_COFINS_AVARAGE = json.load(f)
 
-        with open('files/icms.json', 'r', encoding='utf-8') as f:
+        with open('assets/files/icms.json', 'r', encoding='utf-8') as f:
             self.ICMS = json.load(f)
 
     def OnCloseWindow(self, event):
@@ -262,7 +262,7 @@ class Rendimento(wx.Dialog):
     def loadFile(self):
         ''' Carrega os arquivos. '''
 
-        with open('files/rendimento.json', 'r') as f:
+        with open('assets/files/rendimento.json', 'r') as f:
             self.RENDIMENTOS = json.load(f)
 
     def createTable(self):

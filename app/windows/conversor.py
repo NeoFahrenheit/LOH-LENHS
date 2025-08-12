@@ -48,7 +48,7 @@ class Conversor(wx.Frame):
         self.mcaInput = wx.TextCtrl(self, -1, size=(70, 23))
         self.mcaOutput = wx.TextCtrl(self, -1, style=wx.TE_READONLY | wx.CURSOR_NONE, size=(70, 23))
 
-        bmp = wx.Bitmap('images/copy.png')
+        bmp = wx.Bitmap('assets/images/copy.png')
         copyBtn = wx.Button(self, 1001, size=(23, 23))
         copyBtn.SetBitmap(bmp)
         tooltip = wx.ToolTip('Copiar')
@@ -84,7 +84,7 @@ class Conversor(wx.Frame):
         self.metersInput = wx.TextCtrl(self, -1, size=(70, 23))
         self.metersOutput = wx.TextCtrl(self, -1, style=wx.TE_READONLY | wx.CURSOR_NONE, size=(70, 23))
 
-        bmp = wx.Bitmap('images/copy.png')
+        bmp = wx.Bitmap('assets/images/copy.png')
         copyBtn = wx.Button(self, 1000, size=(23, 23))
         copyBtn.SetBitmap(bmp)
         tooltip = wx.ToolTip('Copiar')

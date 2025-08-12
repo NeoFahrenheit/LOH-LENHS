@@ -3,8 +3,8 @@
 
 import os
 import csv
-import global_variables as gv
-import data_processing as dp
+import app.global_variables as gv
+import app.data_processing as dp
 
 def getFileExtension(filename):
     """ Recebe um string com o nome do arquivo e retorna a extensao.

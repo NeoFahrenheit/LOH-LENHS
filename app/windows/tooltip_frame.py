@@ -4,7 +4,7 @@ tooltip_frame.py
 '''
 
 import wx
-import global_variables as gv
+import app.global_variables as gv
 
 class TooltipFrame(wx.Frame):
     ''' Classe responsavel pela janela das tooltips. '''
@@ -26,7 +26,7 @@ class TooltipFrame(wx.Frame):
         ''' Recebe um index e exibe a tooltip correspondente. '''
 
         text = wx.StaticText(self, -1, gv.tooltipList[index])
-        imagePath = f'images/tooltip_images/tooltip{index}.png'
+        imagePath = f'assets/images/tooltip_assets/images/tooltip{index}.png'
         image = wx.StaticBitmap(self, -1)
         image.SetBitmap(wx.Bitmap(imagePath))
 

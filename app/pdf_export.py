@@ -7,14 +7,14 @@ import os
 import shutil
 import wx
 from fpdf import FPDF, XPos
-import global_variables as gv
-import file_manager as fm
+import app.global_variables as gv
+import app.file_manager as fm
 
-import water_consumption
-import parameters
-import energy_consumption
-import custos
-import hydric
+import app.windows.water_consumption as water_consumption
+import app.windows.parameters as parameters
+import app.windows.energy_consumption as energy_consumption
+import app.windows.custos as custos
+import app.windows.hydric as hydric
 
 class PDF(FPDF):
     def footer(self):
@@ -178,9 +178,9 @@ class ExportPDF(wx.Dialog):
 
         # Primeira página.
         pdf.add_page()
-        pdf.image('images/logo.png', 10, 10, 280)
-        pdf.image('images/iph_logo.png', 300, 12, 60)
-        pdf.image('images/lenhs_logo.png', 370, 9, 40)
+        pdf.image('assets/images/logo.png', 10, 10, 280)
+        pdf.image('assets/images/iph_logo.png', 300, 12, 60)
+        pdf.image('assets/images/lenhs_logo.png', 370, 9, 40)
         pdf.image(f"{os.path.expanduser('~')}/iph_cache/water.png", 30, 80, 350)
 
         pdf.set_font("helvetica", "BI", 20)

@@ -1,7 +1,7 @@
 from pydoc import isdata
 import wx
-import energy_consumption
-import parameters
+import app.windows.energy_consumption as energy_consumption
+import app.windows.parameters as parameters
 
 class ResultWindow(wx.Frame):
     ''' Classe responsavel pela criacao das janelas de calculo das Tarifas Verdes e Azuis. '''

@@ -10,12 +10,12 @@ import wx.grid as gridlib
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta
-import global_variables as gv
-import data_processing as dp
-import file_manager as fm
-import conversor
-import database
-import water_database
+import app.global_variables as gv
+import app.data_processing as dp
+import app.file_manager as fm
+import app.windows.conversor as conversor
+import app.windows.database as database
+import app.windows.water_database as water_database
 
 class HydricBalance(wx.Frame):
     """ Cria a janela de `Balanço Hídrico de Reservatório`. """
@@ -70,13 +70,13 @@ class HydricBalance(wx.Frame):
     def initToolbar(self):
         ''' Inicializa a self.toolbar. '''
 
-        newTool = self.toolbar.AddTool(wx.ID_NEW, 'Novo', wx.Bitmap('images/new.png'), 'Criar novo arquivo')
-        openTool = self.toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir arquivo')
-        saveTool = self.toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('images/save.png'), 'Salvar arquivo')
-        conversorTool = self.toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('images/calculator.png'), 'Conversor de unidades')
-        databaseTool = self.toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('images/database.png'), 'Banco de dados')
+        newTool = self.toolbar.AddTool(wx.ID_NEW, 'Novo', wx.Bitmap('assets/images/new.png'), 'Criar novo arquivo')
+        openTool = self.toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('assets/images/open.png'), 'Abrir arquivo')
+        saveTool = self.toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('assets/images/save.png'), 'Salvar arquivo')
+        conversorTool = self.toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('assets/images/calculator.png'), 'Conversor de unidades')
+        databaseTool = self.toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('assets/images/database.png'), 'Banco de dados')
         self.toolbar.AddSeparator()
-        homeTool = self.toolbar.AddTool(wx.ID_HOME, 'Home', wx.Bitmap('images/home.png'), 'Voltar para Home')
+        homeTool = self.toolbar.AddTool(wx.ID_HOME, 'Home', wx.Bitmap('assets/images/home.png'), 'Voltar para Home')
 
         self.Bind(wx.EVT_TOOL, self.OnNewFile, newTool)
         self.Bind(wx.EVT_TOOL, self.OnOpenFile, openTool)
@@ -1212,8 +1212,8 @@ class HydricGrid(wx.Frame):
     def initToolbar(self):
         ''' Inicializa a toolbar. '''
 
-        save_tool = self.toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('images/save.png'), 'Salvar')
-        database_tool = self.toolbar.AddTool(wx.ID_ANY, 'Database', wx.Bitmap('images/database.png'), 'Database')
+        save_tool = self.toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('assets/images/save.png'), 'Salvar')
+        database_tool = self.toolbar.AddTool(wx.ID_ANY, 'Database', wx.Bitmap('assets/images/database.png'), 'Database')
 
         self.Bind(wx.EVT_TOOL, self.OnSave, save_tool)
         self.Bind(wx.EVT_TOOL, self.OnDatabase, database_tool)

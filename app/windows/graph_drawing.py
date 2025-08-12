@@ -8,7 +8,7 @@ import wx.lib.scrolledpanel as scrolled
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
-import data_processing as dp
+import app.data_processing as dp
 
 class GraphCalendar(wx.Panel):
     def __init__(self, parent, data):

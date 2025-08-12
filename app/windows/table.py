@@ -5,8 +5,8 @@ Arquivo contem a classe responsável pela tabela.
 
 import wx
 import wx.grid as gridlib
-import data_processing as dp
-import global_variables as gv
+import app.data_processing as dp
+import app.global_variables as gv
 
 class Table(wx.Frame):
 

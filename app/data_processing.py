@@ -7,7 +7,7 @@ import wx
 import numpy as np
 from scipy.interpolate import make_interp_spline
 import datetime
-import global_variables as gv
+import app.global_variables as gv
 
 def is_date(date):
     """ Recebe uma string ``date`` e verifica se está no formato

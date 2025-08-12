@@ -9,9 +9,9 @@ import numpy as np
 from scipy.optimize import curve_fit
 from intersect import intersection
 import matplotlib.pyplot as plt
-import global_variables as gv
-import file_manager as fm
-import data_processing as dp
+import app.global_variables as gv
+import app.file_manager as fm
+import app.data_processing as dp
 
 class PumpWindow(wx.Panel):
     ''' Classe responsavel pela janela de `Curva da Bomba`. '''
@@ -60,9 +60,9 @@ class PumpWindow(wx.Panel):
     def initToolbar(self):
         ''' Inicializa a toolbar. '''
 
-        clear_tool = self.toolbar.AddTool(-1, 'Limpar tabela', wx.Bitmap('images/remove.png'), 'Limpar tabela')
-        draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('images/graph.png'), 'Desenhar gráfico')
-        info_tool = self.toolbar.AddTool(wx.ID_INFO, 'Ajuda', wx.Bitmap('images/info.png'), 'Ajuda')
+        clear_tool = self.toolbar.AddTool(-1, 'Limpar tabela', wx.Bitmap('assets/images/remove.png'), 'Limpar tabela')
+        draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('assets/images/graph.png'), 'Desenhar gráfico')
+        info_tool = self.toolbar.AddTool(wx.ID_INFO, 'Ajuda', wx.Bitmap('assets/images/info.png'), 'Ajuda')
 
         self.Bind(wx.EVT_TOOL, self._OnClear, clear_tool)
         self.Bind(wx.EVT_TOOL, self.OnDraw, draw_tool)
@@ -501,7 +501,7 @@ class SystemWindow(wx.Panel):
     def initToolbar(self):
         ''' Inicializa a toolbar. '''
 
-        draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('images/graph.png'), 'Desenhar gráfico')
+        draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('assets/images/graph.png'), 'Desenhar gráfico')
         self.Bind(wx.EVT_TOOL, self.OnDraw, draw_tool)
 
         self.toolbar.Realize()
@@ -518,7 +518,7 @@ class SystemWindow(wx.Panel):
         geoText = wx.StaticText(self, -1, 'Desnível geométrico (m)', size=(200,23))
         self.geoInput = wx.TextCtrl(self, -1)
         self.geoInput.Bind(wx.EVT_TEXT, self.OnValueChanged)
-        geoImage = wx.Bitmap('images/question.png')
+        geoImage = wx.Bitmap('assets/images/question.png')
         geoBitmap = wx.StaticBitmap(self, -1, geoImage)
         geoTooltip = wx.ToolTip('Entre com o desnível geométrico em metros.')
         geoBitmap.SetToolTip(geoTooltip)
@@ -532,7 +532,7 @@ class SystemWindow(wx.Panel):
         tubText = wx.StaticText(self, -1, 'Comprimento da tubulação (m)', size=(200,23))
         self.tubInput = wx.TextCtrl(self, -1)
         self.tubInput.Bind(wx.EVT_TEXT, self.OnValueChanged)
-        tubImage = wx.Bitmap('images/question.png')
+        tubImage = wx.Bitmap('assets/images/question.png')
         tubBitmap = wx.StaticBitmap(self, -1, tubImage)
         tubTooltip = wx.ToolTip('Entre com o comprimento da tubulação em metros.')
         tubBitmap.SetToolTip(tubTooltip)
@@ -546,7 +546,7 @@ class SystemWindow(wx.Panel):
         diaTubText = wx.StaticText(self, -1, 'Diâmtro interno da tubulação (mm)', size=(200,23))
         self.diaTubInput = wx.TextCtrl(self, -1)
         self.diaTubInput.Bind(wx.EVT_TEXT, self.OnValueChanged)
-        diaImage = wx.Bitmap('images/question.png')
+        diaImage = wx.Bitmap('assets/images/question.png')
         diaBitmap = wx.StaticBitmap(self, -1, diaImage)
         diaTooltip = wx.ToolTip('Entre com o comprimento interno da tubulação em milímetros.')
         diaBitmap.SetToolTip(diaTooltip)
@@ -561,7 +561,7 @@ class SystemWindow(wx.Panel):
         rugMatText = wx.StaticText(self, -1, 'Rugosidade do material (mm)', size=(200,23))
         self.rugMatInput = wx.TextCtrl(self, -1, name='rugosidade')
         self.rugMatInput.Bind(wx.EVT_TEXT, self.OnValueChanged)
-        rugMatImage = wx.Bitmap('images/question.png')
+        rugMatImage = wx.Bitmap('assets/images/question.png')
         rugMatBitmap = wx.StaticBitmap(self, -1, rugMatImage)
         rugMatTooltip = wx.ToolTip('Entre com a rugosidade do material em milímetros. Se você não possuir este dado, preencha as variáveis abaixo. Para isto, deixe este campo em branco.')
         rugMatBitmap.SetToolTip(rugMatTooltip)
@@ -577,7 +577,7 @@ class SystemWindow(wx.Panel):
         sumText = wx.StaticText(self, -1, 'Somatório dos coeficientes de singularidade', size=(200,40))
         self.sumInput = wx.TextCtrl(self, -1, name='somatorio')
         self.sumInput.Bind(wx.EVT_TEXT, self.OnValueChanged)
-        sumImage = wx.Bitmap('images/question.png')
+        sumImage = wx.Bitmap('assets/images/question.png')
         sumBitmap = wx.StaticBitmap(self, -1, sumImage)
         sumTooltip = wx.ToolTip('Entre com o somatório dos coeficientes de singularidade. Se você não possuir este dado, preencha as variáveis abaixo. Para isto, deixe este campo em branco.')
         sumBitmap.SetToolTip(sumTooltip)
@@ -1195,7 +1195,7 @@ class OperationPoint(wx.Panel):
     def initToolbar(self):
         ''' Inicializa a toolbar. '''
 
-        draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('images/graph.png'), 'Desenhar gráfico')
+        draw_tool = self.toolbar.AddTool(-1, 'Desenhar Gráfico', wx.Bitmap('assets/images/graph.png'), 'Desenhar gráfico')
         self.Bind(wx.EVT_TOOL, self.OnDraw, draw_tool)
 
         self.toolbar.Realize()

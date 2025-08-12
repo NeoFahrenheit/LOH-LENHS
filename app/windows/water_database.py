@@ -9,8 +9,8 @@ import wx.lib.scrolledpanel as scrolled
 import json
 import matplotlib.pyplot as plt
 import unidecode
-import data_processing as dp
-import global_variables as gv
+import app.data_processing as dp
+import app.global_variables as gv
 
 class WaterDataBase(wx.Frame):
     ''' Classe responsável pelo banco de dados do consumo de água. '''
@@ -159,7 +159,7 @@ class WaterDataBase(wx.Frame):
     def LoadWaterData(self):
         ''' Carrega o arquivo database.txt para `self.waterData`. '''
 
-        with open('files/water_database.json', 'r', encoding='utf-8') as f:
+        with open('assets/files/water_database.json', 'r', encoding='utf-8') as f:
             text = f.read()
             self.waterData = json.loads(text)
 

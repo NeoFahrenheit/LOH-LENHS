@@ -5,14 +5,14 @@ Janela responsavel pelos parametros do sistema. Ela nao precisa que os consumos 
 
 import wx
 import os
-import database
-import global_variables as gv
-import file_manager as fm
-import data_processing as dp
-import global_variables as gv
-import conversor
-import tooltip_frame as tf
-import parameters_windows
+import app.windows.database as database
+import app.global_variables as gv
+import app.file_manager as fm
+import app.data_processing as dp
+import app.global_variables as gv
+import app.windows.conversor as conversor
+import app.windows.tooltip_frame as tf
+import app.windows.parameters_windows as parameters_windows
 
 VAZAO_BOMBEADA = 'Vazão bombeada (m³/h)'
 VAZAO_BOMBEADA_PNG = None
@@ -119,13 +119,13 @@ class ParametersWindow(wx.Frame):
     def setupToolbar(self, toolbar):
         """ Inicializa a toolbar. """
 
-        newTool = toolbar.AddTool(wx.ID_NEW, 'Novo', wx.Bitmap('images/new.png'), 'Novo arquivo')
-        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('images/open.png'), 'Abrir Arquivo')
-        saveTool = toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('images/save.png'), 'Salvar arquivo')
-        conversorTool = toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('images/calculator.png'), 'Abrir o conversor de unidades')
-        databaseTool = toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('images/database.png'), 'Abrir o banco de dados')
+        newTool = toolbar.AddTool(wx.ID_NEW, 'Novo', wx.Bitmap('assets/images/new.png'), 'Novo arquivo')
+        openTool = toolbar.AddTool(wx.ID_OPEN, 'Abrir', wx.Bitmap('assets/images/open.png'), 'Abrir Arquivo')
+        saveTool = toolbar.AddTool(wx.ID_SAVE, 'Salvar', wx.Bitmap('assets/images/save.png'), 'Salvar arquivo')
+        conversorTool = toolbar.AddTool(wx.ID_ANY, 'Conversor', wx.Bitmap('assets/images/calculator.png'), 'Abrir o conversor de unidades')
+        databaseTool = toolbar.AddTool(wx.ID_ANY, 'Banco de dados', wx.Bitmap('assets/images/database.png'), 'Abrir o banco de dados')
         toolbar.AddSeparator()
-        homeTool = toolbar.AddTool(wx.ID_HOME, 'Voltar pra Home', wx.Bitmap('images/home.png'), 'Voltar para Home')
+        homeTool = toolbar.AddTool(wx.ID_HOME, 'Voltar pra Home', wx.Bitmap('assets/images/home.png'), 'Voltar para Home')
 
         self.Bind(wx.EVT_TOOL, self.OnNewFile, newTool)
         self.Bind(wx.EVT_TOOL, self.OnOpenFile, openTool)
@@ -392,19 +392,19 @@ class ParametersWindow(wx.Frame):
         """ Recebe um indice (0 ~ 6) e retorna o path do ícone dos parametros do sistema. """
 
         if index == 0:
-            return 'images/parameters/water_tap.png'
+            return 'assets/images/parameters/water_tap.png'
         elif index == 1:
-            return 'images/parameters/altura.png'
+            return 'assets/images/parameters/altura.png'
         elif index == 2:
-            return 'images/parameters/motor.png'
+            return 'assets/images/parameters/motor.png'
         elif index == 3:
-            return 'images/parameters/bomba.png'
+            return 'assets/images/parameters/bomba.png'
         elif index == 4:
-            return 'images/parameters/bombas.png'
+            return 'assets/images/parameters/bombas.png'
         elif index == 5:
-            return 'images/parameters/on_time.png'
+            return 'assets/images/parameters/on_time.png'
         elif index == 6:
-            return 'images/parameters/off_time.png'
+            return 'assets/images/parameters/off_time.png'
         else:
             return None
 

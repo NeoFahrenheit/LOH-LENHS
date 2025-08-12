@@ -25,8 +25,8 @@ class About(wx.Dialog):
 
         master = wx.BoxSizer(wx.VERTICAL)
 
-        # logo = wx.StaticBitmap(self, -1, wx.Bitmap('images/iph_logo.png'))
-        logo2 = wx.StaticBitmap(self, -1, wx.Bitmap('images/lenhs_logo.png'))
+        # logo = wx.StaticBitmap(self, -1, wx.Bitmap('assets/images/iph_logo.png'))
+        logo2 = wx.StaticBitmap(self, -1, wx.Bitmap('assets/images/lenhs_logo.png'))
         name = wx.StaticText(self, -1, 'LENHS / Diagnóstico Hidroenergético')
         ver = wx.StaticText(self, -1, f'Versão: {self.parent.version}')
         pyVer = wx.StaticText(self, -1, 'Python: 3.9.2')
@@ -67,7 +67,7 @@ class About(wx.Dialog):
 
         # self.rtc.Newline()
         # self.rtc.BeginAlignment(wx.TEXT_ALIGNMENT_CENTER)
-        # self.rtc.WriteImage(wx.Bitmap('images/iph_logo.png'))
+        # self.rtc.WriteImage(wx.Bitmap('assets/images/iph_logo.png'))
         # self.rtc.Newline()
 
         # self.rtc.AppendText('Laboratório de Eficiência Energética e Hidráulica no Saneamento')
